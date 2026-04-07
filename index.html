@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram運用マニュアル</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;background:#f5f5f0;color:#2c2c2c;line-height:1.7}
+header{background:#1a1a2e;color:#fff;padding:24px 20px 8px;text-align:center}
+header h1{font-size:1.3em;letter-spacing:.08em;font-weight:600}
+header p.sub{font-size:.8em;color:#c4a265;margin-top:4px;letter-spacing:.15em}
+.progress-area{background:#1a1a2e;padding:8px 20px 16px;position:sticky;top:0;z-index:99;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.progress-bar-wrap{background:#2a2a4a;border-radius:6px;height:10px;overflow:hidden;max-width:700px;margin:0 auto}
+.progress-bar-fill{background:linear-gradient(90deg,#c4a265,#dbb978);height:100%;border-radius:6px;transition:width .4s ease}
+.progress-text{text-align:center;color:#c4a265;font-size:.85em;margin-top:6px;font-weight:500}
+.container{max-width:760px;margin:0 auto;padding:16px 12px 60px}
+.section{background:#fff;border-radius:10px;margin-bottom:14px;box-shadow:0 1px 6px rgba(0,0,0,.06);overflow:hidden}
+.section-header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;cursor:pointer;user-select:none;transition:background .2s}
+.section-header:hover{background:#fafaf6}
+.section-header .left{display:flex;align-items:center;gap:12px}
+.section-header .icon{font-size:1.4em;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:#1a1a2e;border-radius:8px;flex-shrink:0}
+.section-header .title-area h2{font-size:1em;font-weight:600;color:#1a1a2e}
+.section-header .title-area .sec-progress{font-size:.75em;color:#999;margin-top:2px}
+.section-header .arrow{font-size:.8em;color:#999;transition:transform .3s}
+.section-header .arrow.open{transform:rotate(180deg)}
+.section-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.section-body.open{max-height:5000px}
+.step{display:flex;gap:14px;padding:14px 18px;border-top:1px solid #f0efe8;transition:opacity .3s,background .2s}
+.step:hover{background:#fdfdf8}
+.step.done{opacity:.55}
+.step.done .step-title{text-decoration:line-through;color:#999}
+.step .check-wrap{padding-top:2px;flex-shrink:0}
+.step input[type=checkbox]{width:20px;height:20px;accent-color:#c4a265;cursor:pointer}
+.step .step-content{flex:1;min-width:0}
+.step .step-num{font-size:.7em;color:#c4a265;font-weight:700;letter-spacing:.05em}
+.step .step-title{font-size:.95em;font-weight:600;color:#1a1a2e;margin:2px 0 4px}
+.step .step-desc{font-size:.8em;color:#777;line-height:1.6}
+.step .step-complete{font-size:.75em;color:#4a8c6f;margin-top:4px;display:flex;align-items:center;gap:4px}
+.step .step-complete::before{content:"";display:inline-block;width:6px;height:6px;background:#4a8c6f;border-radius:50%}
+.step .toggle-detail{font-size:.75em;color:#c4a265;cursor:pointer;margin-top:4px;display:inline-block}
+.step .detail-body{display:none}
+.step .detail-body.show{display:block}
+.reset-area{text-align:center;padding:30px 0}
+.reset-btn{background:none;border:1px solid #ccc;color:#999;padding:8px 24px;border-radius:6px;cursor:pointer;font-size:.8em;transition:all .2s}
+.reset-btn:hover{border-color:#c4a265;color:#c4a265}
+.footer-note{text-align:center;font-size:.7em;color:#bbb;padding:10px 0 30px}
+@media(max-width:600px){header h1{font-size:1.1em}.step{padding:12px 14px}.section-header{padding:14px}}
+</style>
+</head>
+<body>
+<header>
+<h1>Instagram毎週プロモーション運用マニュアル</h1>
+<p class="sub">各店舗共通 詳細手順書</p>
+</header>
+<div class="progress-area">
+<div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar" style="width:0%"></div></div>
+<div class="progress-text" id="progressText">0 / 40 完了</div>
+</div>
+<div class="container" id="app"></div>
+<script>
+const DATA=[
+{id:"prep",title:"準備確認",sub:"週の準備を始める前に確認すること",icon:"📋",steps:[
+{n:1,t:"今週が月内の第何週か確認する",d:"第1週〜第5週のどれかを確認し、今週の役割を把握する",c:"今週の役割が言える状態になっている"},
+{n:2,t:"今週の投稿目的を1文で決める",d:"例：落ち着いた空間を伝えて、接待利用の安心感を作る",c:"今週の投稿目的が1文で書けている"},
+{n:3,t:"今週のメイン訴求を1つに絞る",d:"候補：空間／料理／コース／個室／接待利用／会食利用／季節感／限定性／職人技／滞在価値",c:"今週の投稿の主役が1つ決まっている"}
+]},
+{id:"fri",title:"金曜日：写真ピックアップ",sub:"素材選定",icon:"📸",steps:[
+{n:4,t:"素材を集めるフォルダを開く",d:"店舗別・今月撮影分・未使用良素材・季節訴求・空間・料理の各フォルダを確認",c:"今週使う候補素材を見られる状態になっている"},
+{n:5,t:"今週の役割に合う素材だけを候補に残す",d:"週の役割（興味喚起・比較検討・意思決定・信頼強化）に合う素材を選別",c:"今週の役割に合う素材だけが候補に残っている"},
+{n:6,t:"素材を5〜10点に絞る",d:"主役素材2〜3点、補助素材2〜4点、雰囲気素材1〜3点を目安に選定",c:"使う候補素材が5〜10点に絞られている"},
+{n:7,t:"使わない素材を明確に外す",d:"別フォルダに移す。使う候補だけを新規フォルダにコピーし番号をつける",c:"今週使う素材だけが見える状態になっている"},
+{n:8,t:"今週の素材セットを保存する",d:"フォルダ名例：2026-04-xx_店舗名_week1",c:"今週用の素材セットが独立保存されている"}
+]},
+{id:"sat",title:"土曜日：Claude依頼作成",sub:"GitHub設定・制作依頼",icon:"🤖",steps:[
+{n:9,t:"Claudeに渡す前提情報をメモする",d:"店舗名・役割・目的・メイン訴求・ターゲット・最重要価値・予約導線を整理",c:"Claudeに渡す前提情報が手元にまとまっている"},
+{n:10,t:"GitHubで動画専用リポジトリを設定する",d:"命名例：2026-04-10-ogano-seasonal-course。リポジトリ設定が完了して初めて画像をpushできる",c:"動画専用リポジトリがGitHub上で準備完了している"},
+{n:11,t:"リポジトリの基本構成を確認する",d:"README.md / index.md / drafts / captions / hashtags / music / final。画像はリポジトリ直下に配置",c:"リポジトリの基本構成が確認できている"},
+{n:12,t:"Claude Codeで対象リポジトリを指定する",d:"各動画ごとに専用リポジトリを指定し、以降の指示はそのリポジトリ内を前提に出す",c:"Claude Codeで作業対象リポジトリが明確に指定されている"},
+{n:13,t:"画像をpushしてアップロードする",d:"リポジトリ設定完了後、Claudeのスクリプトからpushして画像をアップロード。使用画像のみリポジトリ直下に配置",c:"今回使う画像がリポジトリ直下にアップロードされている"},
+{n:14,t:"Claudeに最初の確認指示を出す",d:"リポジトリ全体を確認させ、使用画像・メモ・前提情報の整理を依頼する",c:"Claudeが対象リポジトリと画像内容を理解した要約を返している"},
+{n:15,t:"Claudeにインデックス作成指示を出す",d:"素材一覧・分類・訴求軸・不足素材・制作時の注意点を整理させる",c:"Claudeによる素材整理と訴求軸整理が完了している"},
+{n:16,t:"Claudeに制作指示を出す",d:"動画構成案・テロップ案・キャプション案3パターン・ハッシュタグ案・素材選定・BGM方向性を依頼",c:"Claudeに制作依頼が送信されている"},
+{n:17,t:"Claudeの出力を保存する",d:"構成案・テロップ案・キャプション案・ハッシュタグ案・BGM方向性をcaptions/drafts等に保存",c:"Claudeの出力が後から見返せる状態で保存されている"}
+]},
+{id:"sun",title:"日曜日：修正",sub:"構成・テロップ・キャプション調整",icon:"✏️",steps:[
+{n:18,t:"Claudeの構成案を読む",d:"流れの自然さ・主役の明確さ・冒頭3秒の強さ・CTAの有無を確認",c:"構成の全体像が理解できている"},
+{n:19,t:"採用する構成を1つ選ぶ",d:"安心感の強さ・接待想起・情報量・予約導線・店の格との整合を基準に選定",c:"採用構成が1つ決まっている"},
+{n:20,t:"テロップを削る",d:"繰り返し・読まないと成立しない・長すぎる・説明くさい・軽い表現を削除",c:"テロップが最小限になっている"},
+{n:21,t:"キャプションを整える",d:"1行目の引き・軽すぎない言葉・接待文脈・予約導線・読みやすさを確認",c:"投稿本文として使えるキャプションが1本完成している"},
+{n:22,t:"ハッシュタグを整理する",d:"店舗名系・エリア系・利用シーン系・料理ジャンル系を整理",c:"今回使うハッシュタグが確定している"},
+{n:23,t:"必要ならClaudeに再修正依頼する",d:"接待利用の伝わり方・トーン・テロップ量・予約導線の強さなどを調整依頼",c:"必要な修正が反映されている"}
+]},
+{id:"mon",title:"月曜日：初稿提出",sub:"データ集約・提出",icon:"📄",steps:[
+{n:24,t:"今週の初稿データをまとめる",d:"採用素材・構成案・テロップ案・キャプション案・ハッシュタグ・BGM候補を一箇所に集約",c:"初稿一式が一箇所にまとまっている"},
+{n:25,t:"初稿の状態を確認する",d:"伝える内容の明確さ・素材確定・キャプション確定・CTA有無・修正ポイント言語化",c:"他人に見せても内容がわかる状態になっている"},
+{n:26,t:"初稿提出済みとして保存する",d:"draft_v1 / first_draft_complete / captions_v1 等で保存",c:"初稿が完成版と混ざらない状態で保存されている"}
+]},
+{id:"tue",title:"火曜日：チェックバック",sub:"客観評価・修正",icon:"🔍",steps:[
+{n:27,t:"1日置いた目で見直す",d:"安心感・接待想起・説明過多・雰囲気だけで終わっていないか・予約導線を客観確認",c:"初稿を客観的に評価できている"},
+{n:28,t:"チェックバック項目を確認する",d:"内容面（安心感・接待・利用シーン）、表現面（品格・テロップ量・日本語）、導線面（CTA・予約サイト）",c:"修正点が明確になっている"},
+{n:29,t:"修正が必要な箇所だけ直す",d:"テロップ削減・キャプション1行目強化・接待文脈追加・CTA明確化・素材順変更など",c:"最終版に近い状態になっている"}
+]},
+{id:"wed",title:"水曜日：納品",sub:"最終確定・保存",icon:"📦",steps:[
+{n:30,t:"最終版データを確定する",d:"最終構成・素材順・キャプション・ハッシュタグ・BGM・CTAをすべてFIX",c:"投稿に必要な要素が全部FIXしている"},
+{n:31,t:"保存先を整える",d:"投稿動画・キャプション本文・ハッシュタグ・サムネ候補・予約導線文言をまとめる",c:"投稿当日に探し物が発生しない状態になっている"},
+{n:32,t:"最終チェックを行う",d:"店名・料理名・地名の誤字、日本語の自然さ、接待適合、予約導線を最終確認",c:"投稿して問題ないと判断できる"}
+]},
+{id:"thu",title:"木曜日：投稿",sub:"公開・確認",icon:"🚀",steps:[
+{n:33,t:"投稿時間を確認する",d:"投稿時間は木曜日21:00",c:"投稿時間が確認できている"},
+{n:34,t:"投稿データを開く",d:"動画・キャプション・ハッシュタグ・予約導線文言を準備",c:"投稿素材一式がすぐ使える状態になっている"},
+{n:35,t:"投稿前に最後の誤字確認をする",d:"店舗名・料理名・漢字・CTA・ハッシュタグ表記を確認",c:"誤字脱字がない"},
+{n:36,t:"投稿する",d:"完成動画・最終キャプション・ハッシュタグ・予約サイト導線を入れて公開",c:"投稿が公開されている"},
+{n:37,t:"投稿後に見え方を確認する",d:"サムネ・改行崩れ・キャプションの読みにくさ・ハッシュタグ・全体の格を確認",c:"投稿後表示に大きな問題がない"}
+]},
+{id:"close",title:"週の締め作業",sub:"記録・振り返り",icon:"📝",steps:[
+{n:38,t:"使用素材を記録する",d:"投稿日・店舗名・週の役割・メイン訴求・使用素材名・キャプション冒頭・ハッシュタグ・BGM",c:"後から見返せる記録が残っている"},
+{n:39,t:"良かった点と改善点を1つずつ残す",d:"例：良かった点＝空間訴求が強く接待感が出た、改善点＝テロップが少し多かった",c:"次回に活かせるメモが残っている"},
+{n:40,t:"次週に向けて素材不足を確認する",d:"個室写真・接客感写真・旬食材アップ・空間全景など不足素材を把握",c:"次回撮影や素材依頼の必要が把握できている"}
+]}
+];
+const TOTAL=40;
+const KEY="instagram-manual-progress";
+let state=JSON.parse(localStorage.getItem(KEY)||"{}");
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function updateProgress(){
+let done=Object.values(state).filter(Boolean).length;
+document.getElementById("progressBar").style.width=(done/TOTAL*100)+"%";
+document.getElementById("progressText").textContent=done+" / "+TOTAL+" 完了";
+DATA.forEach(sec=>{
+let cnt=sec.steps.filter(s=>state[s.n]).length;
+let el=document.querySelector('[data-sec-progress="'+sec.id+'"]');
+if(el)el.textContent=cnt+"/"+sec.steps.length+" 完了";
+});
+}
+function render(){
+const app=document.getElementById("app");
+let html="";
+DATA.forEach(sec=>{
+html+='<div class="section"><div class="section-header" onclick="toggleSection(\''+sec.id+'\')">';
+html+='<div class="left"><div class="icon">'+sec.icon+'</div><div class="title-area"><h2>'+sec.title+'</h2>';
+html+='<div class="sec-progress" data-sec-progress="'+sec.id+'">0/'+sec.steps.length+' 完了</div></div></div>';
+html+='<div class="arrow" id="arrow-'+sec.id+'">&#9660;</div></div>';
+html+='<div class="section-body" id="body-'+sec.id+'">';
+sec.steps.forEach(s=>{
+let checked=state[s.n]?'checked':'';
+let doneClass=state[s.n]?'done':'';
+html+='<div class="step '+doneClass+'" id="step-'+s.n+'">';
+html+='<div class="check-wrap"><input type="checkbox" '+checked+' onchange="toggle('+s.n+',this)"></div>';
+html+='<div class="step-content">';
+html+='<div class="step-num">STEP '+s.n+'</div>';
+html+='<div class="step-title">'+s.t+'</div>';
+html+='<div class="step-desc">'+s.d+'</div>';
+html+='<div class="step-complete">完了条件：'+s.c+'</div>';
+html+='</div></div>';
+});
+html+='</div></div>';
+});
+html+='<div class="reset-area"><button class="reset-btn" onclick="resetAll()">進捗をリセットする</button></div>';
+html+='<div class="footer-note">Instagram毎週プロモーション運用マニュアル 完全統合版</div>';
+app.innerHTML=html;
+updateProgress();
+}
+function toggle(n,el){
+state[n]=el.checked;
+save();
+let step=document.getElementById("step-"+n);
+if(el.checked)step.classList.add("done");else step.classList.remove("done");
+updateProgress();
+}
+function toggleSection(id){
+let body=document.getElementById("body-"+id);
+let arrow=document.getElementById("arrow-"+id);
+body.classList.toggle("open");
+arrow.classList.toggle("open");
+}
+function resetAll(){
+if(confirm("すべての進捗をリセットしますか？")){state={};save();render();}
+}
+render();
+// Open first incomplete section only
+let opened=false;
+DATA.forEach(sec=>{
+if(!opened && sec.steps.some(s=>!state[s.n])){toggleSection(sec.id);opened=true;}
+});
+</script>
+</body>
+</html>
