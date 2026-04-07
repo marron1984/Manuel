@@ -88,6 +88,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 .ctx-field label{display:block;font-size:.75rem;font-weight:600;color:var(--g600);margin-bottom:.3rem}
 .ctx-field select{width:100%;padding:.5rem .75rem;border:1px solid var(--g300);border-radius:6px;font-size:.88rem;font-family:inherit;color:var(--text);background:var(--white);cursor:pointer;transition:border-color var(--tr)}
 .ctx-field select:focus{outline:none;border-color:var(--gold)}
+.ctx-field input[type=text]{width:100%;padding:.5rem .75rem;border:1px solid var(--g300);border-radius:6px;font-size:.88rem;font-family:inherit;color:var(--text);background:var(--white);transition:border-color var(--tr)}
+.ctx-field input[type=text]:focus{outline:none;border-color:var(--gold)}
+.ctx-field input[type=text]::placeholder{color:var(--g400)}
+.step-who{font-size:.72rem;color:var(--gold-dark);margin-top:.3rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+.step-who .who-name{font-weight:700}
+.step-who .who-date{color:var(--g500)}
+.log-panel{max-width:800px;margin:0 auto 2rem;padding:0 1rem}
+.log-box{background:var(--white);border-radius:var(--rad);box-shadow:var(--shadow);overflow:hidden}
+.log-hd{display:flex;align-items:center;padding:1rem 1.25rem;cursor:pointer;user-select:none;gap:.75rem;transition:background var(--tr)}
+.log-hd:hover{background:var(--g50)}
+.log-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:var(--navy);color:var(--gold-light);flex-shrink:0}
+.log-title{flex:1;font-size:.95rem;font-weight:700;color:var(--navy)}
+.log-cnt{font-size:.75rem;color:var(--g500)}
+.log-chev{width:20px;height:20px;color:var(--g400);transition:transform var(--tr);flex-shrink:0}
+.log-box.open .log-chev{transform:rotate(180deg)}
+.log-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.log-box.open .log-body{max-height:5000px}
+.log-body-in{padding:0 1.25rem 1rem}
+.log-empty{padding:1rem 0;text-align:center;color:var(--g500);font-size:.85rem}
+.log-item{display:flex;gap:.75rem;padding:.6rem 0;border-top:1px solid var(--g100);font-size:.82rem;align-items:flex-start}
+.log-item-date{flex-shrink:0;color:var(--g500);width:90px;font-size:.75rem;line-height:1.6}
+.log-item-body{flex:1;line-height:1.6}
+.log-item-step{font-weight:600;color:var(--navy)}
+.log-item-name{color:var(--gold-dark);font-weight:600}
+.log-item-ctx{color:var(--g500);font-size:.75rem}
 .ctx-script{margin-top:.75rem;background:var(--g50);border-radius:6px;padding:1rem;border:1px solid var(--g200)}
 .ctx-script-label{font-size:.7rem;font-weight:700;color:var(--gold-dark);letter-spacing:.06em;margin-bottom:.5rem}
 .ctx-script-body{font-size:.85rem;line-height:1.8;color:var(--text)}
@@ -147,6 +172,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 </select>
 </div>
 </div>
+<div class="ctx-row">
+<div class="ctx-field">
+<label>&#x62C5;&#x5F53;&#x8005;</label>
+<input type="text" id="inpName" placeholder="&#x540D;&#x524D;&#x3092;&#x5165;&#x529B;">
+</div>
+</div>
 <div class="ctx-script" id="ctxScript" style="display:none">
 <div class="ctx-script-label">&#x4ECA;&#x9031;&#x306E;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;</div>
 <div class="ctx-script-body" id="ctxScriptBody"></div>
@@ -160,6 +191,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 <button class="btn btn-d" id="bReset">&#x30EA;&#x30BB;&#x30C3;&#x30C8;</button>
 </div>
 <div class="container" id="app"></div>
+<div class="log-panel">
+<div class="log-box" id="logBox">
+<div class="log-hd" onclick="document.getElementById('logBox').classList.toggle('open')">
+<div class="log-icon">&#x1F4CA;</div>
+<div class="log-title">&#x5B8C;&#x4E86;&#x5C65;&#x6B74;</div>
+<span class="log-cnt" id="logCnt">0&#x4EF6;</span>
+<svg class="log-chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+</div>
+<div class="log-body"><div class="log-body-in" id="logBody"></div></div>
+</div>
+</div>
 <div class="modal-ov" id="mOv">
 <div class="modal">
 <h3>&#x9032;&#x6357;&#x3092;&#x30EA;&#x30BB;&#x30C3;&#x30C8;&#x3057;&#x307E;&#x3059;&#x304B;&#xFF1F;</h3>
@@ -234,8 +276,11 @@ var S=[
 {n:41,t:'次週に向けて素材不足を確認する',d:'個室写真・接客感写真・旬食材アップ・空間全景など不足素材を把握',c:'次回撮影や素材依頼の必要が把握できている'}
 ]}
 ];
+var LK='instagram-manual-log';
 var st=JSON.parse(localStorage.getItem(K)||'{}');
+var logs=JSON.parse(localStorage.getItem(LK)||'[]');
 function save(){localStorage.setItem(K,JSON.stringify(st))}
+function saveLog(){localStorage.setItem(LK,JSON.stringify(logs))}
 function updProg(){
 var done=0;for(var k in st){if(st[k])done++}
 document.getElementById('pCnt').textContent=done+' / '+TOTAL+' 完了';
@@ -270,18 +315,53 @@ h+='<div class="step-ct"><div class="step-n">STEP '+s.n+'</div>';
 h+='<div class="step-t">'+s.t+'</div>';
 h+='<div class="step-det"><div class="step-desc">'+s.d+'</div>';
 h+='<div class="step-comp">'+s.c+'</div></div>';
+var info=getStepInfo(s.n);
+if(info){h+='<div class="step-who"><span class="who-name">'+esc(info.name)+'</span><span class="who-date">'+info.date+'</span>'+(info.shop?'<span class="who-date">'+esc(info.shop)+'</span>':'')+'</div>';}
 h+='</div></div>';
 });
 h+='</div></div></div>';
 });
 app.innerHTML=h;
 updProg();
+renderLog();
 }
+function renderLog(){
+var lb=document.getElementById('logBody');
+var lc=document.getElementById('logCnt');
+var dones=logs.filter(function(l){return l.action==='done'});
+lc.textContent=dones.length+'\u4EF6';
+if(dones.length===0){lb.innerHTML='<div class="log-empty">\u307E\u3060\u5C65\u6B74\u304C\u3042\u308A\u307E\u305B\u3093</div>';return}
+var h='';
+for(var i=dones.length-1;i>=0;i--){
+var l=dones[i];
+h+='<div class="log-item">';
+h+='<div class="log-item-date">'+l.date+'</div>';
+h+='<div class="log-item-body">';
+h+='<span class="log-item-step">STEP '+l.step+' '+esc(getStepTitle(l.step))+'</span><br>';
+h+='<span class="log-item-name">'+esc(l.name)+'</span>';
+if(l.shop||l.week){h+=' <span class="log-item-ctx">'+(l.shop?esc(l.shop):'')+(l.week?' \u7B2C'+l.week+'\u9031':'')+'</span>'}
+h+='</div></div>';
+}
+lb.innerHTML=h;
+}
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function getStepInfo(n){
+for(var i=logs.length-1;i>=0;i--){if(logs[i].step===n&&logs[i].action==='done')return logs[i]}
+return null;
+}
+function getStepTitle(n){
+for(var i=0;i<S.length;i++){for(var j=0;j<S[i].steps.length;j++){if(S[i].steps[j].n===n)return S[i].steps[j].t}}return '';
+}
+function fmtDate(d){var o=new Date(d);var mm=('0'+(o.getMonth()+1)).slice(-2);var dd=('0'+o.getDate()).slice(-2);var hh=('0'+o.getHours()).slice(-2);var mi=('0'+o.getMinutes()).slice(-2);return o.getFullYear()+'/'+mm+'/'+dd+' '+hh+':'+mi}
 function tog(n){
 st[n]=!st[n];save();
-var el=document.getElementById('st-'+n);
-if(st[n])el.classList.add('chk');else el.classList.remove('chk');
-updProg();
+var name=document.getElementById('inpName').value.trim();
+var shop=document.getElementById('selShop').value;
+var week=document.getElementById('selWeek').value;
+var now=new Date().toISOString();
+logs.push({step:n,action:st[n]?'done':'undo',name:name||'(未入力)',date:fmtDate(now),shop:shop,week:week,ts:now});
+saveLog();
+render();
 }
 function togSec(id){
 document.getElementById('sec-'+id).classList.toggle('open');
@@ -293,6 +373,7 @@ document.getElementById('bCollapse').onclick=closeAll;
 document.getElementById('bReset').onclick=function(){document.getElementById('mOv').classList.add('active')};
 document.getElementById('bCancel').onclick=function(){document.getElementById('mOv').classList.remove('active')};
 document.getElementById('bConfirm').onclick=function(){st={};save();document.getElementById('mOv').classList.remove('active');render()};
+
 var WEEK_DATA={
 '1':{role:'興味喚起',purpose:'店の存在を印象づけ、安心感の第一印象を作る',focus:'落ち着いた空間・品のある雰囲気・静けさ・余白・大人が使える店'},
 '2':{role:'比較検討①',purpose:'料理の信頼感を高める',focus:'月替わりコース・季節の一皿・職人技・素材の良さ・盛り付けの美しさ'},
@@ -304,8 +385,11 @@ var CK='instagram-manual-ctx';
 var ctx=JSON.parse(localStorage.getItem(CK)||'{}');
 var selShop=document.getElementById('selShop');
 var selWeek=document.getElementById('selWeek');
+var inpName=document.getElementById('inpName');
 if(ctx.shop)selShop.value=ctx.shop;
 if(ctx.week)selWeek.value=ctx.week;
+if(ctx.name)inpName.value=ctx.name;
+inpName.oninput=function(){ctx.name=inpName.value;localStorage.setItem(CK,JSON.stringify(ctx))};
 function updCtx(){
 var shop=selShop.value;var week=selWeek.value;
 ctx={shop:shop,week:week};localStorage.setItem(CK,JSON.stringify(ctx));
