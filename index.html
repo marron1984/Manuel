@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Instagram&#x6BCE;&#x9031;&#x30D7;&#x30ED;&#x30E2;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x904B;&#x7528;&#x30DE;&#x30CB;&#x30E5;&#x30A2;&#x30EB;</title>
+<title>Instagram毎週プロモーション運用マニュアル</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -13,63 +13,17 @@
 --shadow:0 2px 8px rgba(0,0,0,.08);--shadow-lg:0 4px 16px rgba(0,0,0,.12);--rad:8px;--tr:.3s cubic-bezier(.4,0,.2,1)
 }
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;background:var(--g100);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
-.header{background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);padding:2rem 1.5rem 1.5rem;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.3)}
-.header h1{font-size:1.5rem;font-weight:700;letter-spacing:.05em;margin-bottom:.25rem}
-.header .subtitle{font-size:.85rem;color:var(--gold-light);letter-spacing:.08em;margin-bottom:1.2rem}
+.header{background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);padding:2rem 1.5rem 1.5rem;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:padding .3s ease}
+.header.compact{padding:.6rem 1.5rem}
+.header.compact h1,.header.compact .subtitle{display:none}
+.header h1{font-size:1.5rem;font-weight:700;letter-spacing:.05em;margin-bottom:.25rem;transition:var(--tr)}
+.header .subtitle{font-size:.85rem;color:var(--gold-light);letter-spacing:.08em;margin-bottom:1.2rem;transition:var(--tr)}
 .progress-area{max-width:480px;margin:0 auto}
 .progress-counter{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;font-size:.85rem}
 .progress-counter .count{font-weight:700;color:var(--gold-light);font-size:1rem}
 .progress-counter .pct{color:var(--g400)}
 .pbar-outer{width:100%;height:8px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden}
 .pbar-inner{height:100%;background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));border-radius:4px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%}
-.controls{max-width:800px;margin:1rem auto;padding:0 1rem;display:flex;justify-content:flex-end;gap:.5rem;flex-wrap:wrap}
-.btn{padding:.5rem 1rem;border:none;border-radius:var(--rad);font-size:.8rem;cursor:pointer;transition:var(--tr);font-family:inherit}
-.btn-o{background:var(--white);color:var(--g700);border:1px solid var(--g300)}
-.btn-o:hover{background:var(--g200)}
-.btn-d{background:var(--white);color:#c0392b;border:1px solid #e8c4c0}
-.btn-d:hover{background:#fdf0ef}
-.container{max-width:800px;margin:0 auto;padding:0 1rem 3rem}
-.section{background:var(--white);border-radius:var(--rad);margin-bottom:.75rem;box-shadow:var(--shadow);overflow:hidden}
-.sec-hd{display:flex;align-items:center;padding:1rem 1.25rem;cursor:pointer;user-select:none;transition:background var(--tr);gap:.75rem}
-.sec-hd:hover{background:var(--g50)}
-.sec-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;background:var(--navy);color:var(--gold-light)}
-.sec-info{flex:1;min-width:0}
-.sec-day{font-size:.7rem;font-weight:600;color:var(--gold-dark);letter-spacing:.06em}
-.sec-title{font-size:.95rem;font-weight:700;color:var(--navy);line-height:1.4}
-.sec-meta{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
-.sec-ptxt{font-size:.75rem;color:var(--g500);white-space:nowrap}
-.sec-pbar{width:48px;height:4px;background:var(--g200);border-radius:2px;overflow:hidden}
-.sec-pfill{height:100%;background:var(--gold);border-radius:2px;transition:width .4s ease}
-.sec-chev{width:20px;height:20px;color:var(--g400);transition:transform var(--tr);flex-shrink:0}
-.section.open .sec-chev{transform:rotate(180deg)}
-.sec-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
-.section.open .sec-body{max-height:3000px}
-.sec-body-in{padding:0 1.25rem 1rem}
-.step{display:flex;gap:.75rem;padding:.75rem 0;border-top:1px solid var(--g100);transition:opacity var(--tr)}
-.step.chk{opacity:.55}
-.step-cb{flex-shrink:0;margin-top:2px}
-.step-cb input{display:none}
-.step-cb label{display:block;width:22px;height:22px;border:2px solid var(--g300);border-radius:6px;cursor:pointer;position:relative;transition:var(--tr)}
-.step-cb input:checked+label{background:var(--gold);border-color:var(--gold)}
-.step-cb input:checked+label::after{content:'';position:absolute;left:5px;top:2px;width:7px;height:11px;border:solid var(--white);border-width:0 2px 2px 0;transform:rotate(45deg)}
-.step-ct{flex:1;min-width:0}
-.step-n{font-size:.7rem;font-weight:700;color:var(--gold-dark);margin-bottom:.1rem}
-.step-t{font-size:.9rem;font-weight:600;color:var(--text);line-height:1.5;transition:var(--tr)}
-.step.chk .step-t{text-decoration:line-through;text-decoration-color:var(--g400);color:var(--text-m)}
-.step-det{margin-top:.4rem}
-.step-desc,.step-comp{font-size:.8rem;line-height:1.6;color:var(--g600)}
-.step-desc{margin-bottom:.3rem}
-.step-comp{color:var(--gold-dark);font-weight:500}
-.step-comp::before{content:'\2713 '}
-.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;align-items:center;justify-content:center;padding:1rem}
-.modal-ov.active{display:flex}
-.modal{background:var(--white);border-radius:12px;padding:2rem;max-width:360px;width:100%;text-align:center;box-shadow:var(--shadow-lg)}
-.modal h3{font-size:1.1rem;margin-bottom:.5rem;color:var(--navy)}
-.modal p{font-size:.85rem;color:var(--g600);margin-bottom:1.5rem}
-.modal-acts{display:flex;gap:.75rem;justify-content:center}
-.modal-acts .btn{padding:.6rem 1.5rem;font-size:.85rem}
-.btn-cd{background:#c0392b;color:var(--white)}
-.btn-cd:hover{background:#a93226}
 .ctx-panel{max-width:800px;margin:1rem auto .5rem;padding:0 1rem}
 .ctx-box{background:var(--white);border-radius:var(--rad);box-shadow:var(--shadow);border-left:4px solid var(--gold);overflow:hidden}
 .ctx-hd{display:flex;align-items:center;padding:1rem 1.25rem;cursor:pointer;user-select:none;gap:.75rem;transition:background var(--tr)}
@@ -81,19 +35,75 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 .ctx-chev{width:20px;height:20px;color:var(--g400);transition:transform var(--tr);flex-shrink:0}
 .ctx-box.open .ctx-chev{transform:rotate(180deg)}
 .ctx-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
-.ctx-box.open .ctx-body{max-height:800px}
+.ctx-box.open .ctx-body{max-height:900px}
 .ctx-body-in{padding:0 1.25rem 1.25rem}
 .ctx-row{display:flex;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap}
 .ctx-field{flex:1;min-width:140px}
 .ctx-field label{display:block;font-size:.75rem;font-weight:600;color:var(--g600);margin-bottom:.3rem}
-.ctx-field select{width:100%;padding:.5rem .75rem;border:1px solid var(--g300);border-radius:6px;font-size:.88rem;font-family:inherit;color:var(--text);background:var(--white);cursor:pointer;transition:border-color var(--tr)}
-.ctx-field select:focus{outline:none;border-color:var(--gold)}
-.ctx-field input[type=text]{width:100%;padding:.5rem .75rem;border:1px solid var(--g300);border-radius:6px;font-size:.88rem;font-family:inherit;color:var(--text);background:var(--white);transition:border-color var(--tr)}
-.ctx-field input[type=text]:focus{outline:none;border-color:var(--gold)}
-.ctx-field input[type=text]::placeholder{color:var(--g400)}
+.ctx-field select,.ctx-field input[type=text]{width:100%;padding:.5rem .75rem;border:1px solid var(--g300);border-radius:6px;font-size:.88rem;font-family:inherit;color:var(--text);background:var(--white);transition:border-color var(--tr)}
+.ctx-field select:focus,.ctx-field input:focus{outline:none;border-color:var(--gold)}
+.ctx-field input::placeholder{color:var(--g400)}
+.ctx-script{margin-top:.75rem;background:var(--g50);border-radius:6px;padding:1rem;border:1px solid var(--g200)}
+.ctx-script-label{font-size:.7rem;font-weight:700;color:var(--gold-dark);letter-spacing:.06em;margin-bottom:.5rem}
+.ctx-script-body{font-size:.85rem;line-height:1.8;color:var(--text)}
+.ctx-script-body .tag{display:inline-block;background:var(--navy);color:var(--gold-light);font-size:.7rem;font-weight:600;padding:.1rem .5rem;border-radius:4px;margin-right:.3rem}
+.ctx-script-body .role-line{margin-bottom:.25rem}
+.controls{max-width:800px;margin:1rem auto;padding:0 1rem;display:flex;justify-content:flex-end;gap:.5rem;flex-wrap:wrap}
+.btn{padding:.5rem 1rem;border:none;border-radius:var(--rad);font-size:.8rem;cursor:pointer;transition:var(--tr);font-family:inherit}
+.btn-o{background:var(--white);color:var(--g700);border:1px solid var(--g300)}
+.btn-o:hover{background:var(--g200)}
+.btn-d{background:var(--white);color:#c0392b;border:1px solid #e8c4c0}
+.btn-d:hover{background:#fdf0ef}
+.btn-g{background:var(--navy);color:var(--gold-light);border:1px solid var(--navy)}
+.btn-g:hover{opacity:.85}
+.container{max-width:800px;margin:0 auto;padding:0 1rem 1rem}
+.section{background:var(--white);border-radius:var(--rad);margin-bottom:.75rem;box-shadow:var(--shadow);overflow:hidden}
+.section.done-sec{opacity:.7}
+.section.done-sec .sec-icon{background:#27ae60}
+.sec-hd{display:flex;align-items:center;padding:1rem 1.25rem;cursor:pointer;user-select:none;transition:background var(--tr);gap:.75rem}
+.sec-hd:hover{background:var(--g50)}
+.sec-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;background:var(--navy);color:var(--gold-light);transition:background var(--tr)}
+.sec-info{flex:1;min-width:0}
+.sec-day{font-size:.7rem;font-weight:600;color:var(--gold-dark);letter-spacing:.06em}
+.sec-title{font-size:.95rem;font-weight:700;color:var(--navy);line-height:1.4}
+.sec-badge{display:inline-block;font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:4px;margin-left:.4rem;vertical-align:middle}
+.sec-badge.complete{background:#27ae60;color:var(--white)}
+.sec-meta{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.sec-ptxt{font-size:.75rem;color:var(--g500);white-space:nowrap}
+.sec-pbar{width:48px;height:4px;background:var(--g200);border-radius:2px;overflow:hidden}
+.sec-pfill{height:100%;background:var(--gold);border-radius:2px;transition:width .4s ease}
+.sec-chev{width:20px;height:20px;color:var(--g400);transition:transform var(--tr);flex-shrink:0}
+.section.open .sec-chev{transform:rotate(180deg)}
+.sec-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.section.open .sec-body{max-height:5000px}
+.sec-body-in{padding:0 1.25rem 1rem}
+.step{display:flex;gap:.75rem;padding:.75rem 0;border-top:1px solid var(--g100);transition:opacity var(--tr),border-color var(--tr)}
+.step.chk{opacity:.55}
+.step.next-step{border-left:3px solid var(--gold);padding-left:.5rem;border-top-color:var(--gold-light);background:linear-gradient(90deg,rgba(196,162,101,.06),transparent)}
+.step-cb{flex-shrink:0;margin-top:2px}
+.step-cb input{display:none}
+.step-cb label{display:block;width:22px;height:22px;border:2px solid var(--g300);border-radius:6px;cursor:pointer;position:relative;transition:var(--tr)}
+.step-cb input:checked+label{background:var(--gold);border-color:var(--gold)}
+.step-cb input:checked+label::after{content:'';position:absolute;left:5px;top:2px;width:7px;height:11px;border:solid var(--white);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.step-ct{flex:1;min-width:0}
+.step-n{font-size:.7rem;font-weight:700;color:var(--gold-dark);margin-bottom:.1rem;display:flex;align-items:center;gap:.4rem}
+.next-badge{display:inline-block;background:var(--gold);color:var(--white);font-size:.6rem;font-weight:700;padding:.05rem .35rem;border-radius:3px;letter-spacing:.05em}
+.step-t{font-size:.9rem;font-weight:600;color:var(--text);line-height:1.5;transition:var(--tr)}
+.step.chk .step-t{text-decoration:line-through;text-decoration-color:var(--g400);color:var(--text-m)}
+.step-det{margin-top:.4rem}
+.step-desc,.step-comp{font-size:.8rem;line-height:1.6;color:var(--g600)}
+.step-desc{margin-bottom:.3rem}
+.step-comp{color:var(--gold-dark);font-weight:500}
+.step-comp::before{content:'\2713 '}
 .step-who{font-size:.72rem;color:var(--gold-dark);margin-top:.3rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
 .step-who .who-name{font-weight:700}
 .step-who .who-date{color:var(--g500)}
+.step-memo-toggle{font-size:.72rem;color:var(--g500);cursor:pointer;margin-top:.3rem;display:flex;align-items:center;gap:.3rem;user-select:none}
+.step-memo-toggle:hover{color:var(--gold-dark)}
+.step-memo-toggle .has-memo{color:var(--gold)}
+.step-memo-area{margin-top:.4rem}
+.step-memo-area textarea{width:100%;min-height:48px;padding:.4rem .6rem;border:1px solid var(--g300);border-radius:6px;font-size:.8rem;font-family:inherit;color:var(--text);resize:vertical;transition:border-color var(--tr);line-height:1.5}
+.step-memo-area textarea:focus{outline:none;border-color:var(--gold)}
 .log-panel{max-width:800px;margin:0 auto 2rem;padding:0 1rem}
 .log-box{background:var(--white);border-radius:var(--rad);box-shadow:var(--shadow);overflow:hidden}
 .log-hd{display:flex;align-items:center;padding:1rem 1.25rem;cursor:pointer;user-select:none;gap:.75rem;transition:background var(--tr)}
@@ -104,8 +114,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 .log-chev{width:20px;height:20px;color:var(--g400);transition:transform var(--tr);flex-shrink:0}
 .log-box.open .log-chev{transform:rotate(180deg)}
 .log-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
-.log-box.open .log-body{max-height:5000px}
+.log-box.open .log-body{max-height:8000px}
 .log-body-in{padding:0 1.25rem 1rem}
+.log-actions{padding:.5rem 0;display:flex;gap:.5rem;flex-wrap:wrap}
 .log-empty{padding:1rem 0;text-align:center;color:var(--g500);font-size:.85rem}
 .log-item{display:flex;gap:.75rem;padding:.6rem 0;border-top:1px solid var(--g100);font-size:.82rem;align-items:flex-start}
 .log-item-date{flex-shrink:0;color:var(--g500);width:90px;font-size:.75rem;line-height:1.6}
@@ -113,13 +124,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 .log-item-step{font-weight:600;color:var(--navy)}
 .log-item-name{color:var(--gold-dark);font-weight:600}
 .log-item-ctx{color:var(--g500);font-size:.75rem}
-.ctx-script{margin-top:.75rem;background:var(--g50);border-radius:6px;padding:1rem;border:1px solid var(--g200)}
-.ctx-script-label{font-size:.7rem;font-weight:700;color:var(--gold-dark);letter-spacing:.06em;margin-bottom:.5rem}
-.ctx-script-body{font-size:.85rem;line-height:1.8;color:var(--text)}
-.ctx-script-body .tag{display:inline-block;background:var(--navy);color:var(--gold-light);font-size:.7rem;font-weight:600;padding:.1rem .5rem;border-radius:4px;margin-right:.3rem}
-.ctx-script-body .role-line{margin-bottom:.25rem}
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;align-items:center;justify-content:center;padding:1rem}
+.modal-ov.active{display:flex}
+.modal{background:var(--white);border-radius:12px;padding:2rem;max-width:360px;width:100%;text-align:center;box-shadow:var(--shadow-lg)}
+.modal h3{font-size:1.1rem;margin-bottom:.5rem;color:var(--navy)}
+.modal p{font-size:.85rem;color:var(--g600);margin-bottom:1.5rem}
+.modal-acts{display:flex;gap:.75rem;justify-content:center}
+.modal-acts .btn{padding:.6rem 1.5rem;font-size:.85rem}
+.btn-cd{background:#c0392b;color:var(--white)}
+.btn-cd:hover{background:#a93226}
 @media(max-width:600px){
-.header{padding:1.5rem 1rem 1.2rem}.header h1{font-size:1.15rem}
+.header{padding:1.5rem 1rem 1.2rem}.header.compact{padding:.5rem 1rem}
+.header h1{font-size:1.15rem}
 .sec-hd{padding:.85rem 1rem}.sec-icon{width:36px;height:36px;font-size:1rem}
 .sec-title{font-size:.88rem}.sec-body-in{padding:0 1rem .75rem}.sec-pbar{width:36px}
 .ctx-row{flex-direction:column}
@@ -127,12 +143,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 </style>
 </head>
 <body>
-<div class="header">
-<h1>Instagram&#x6BCE;&#x9031;&#x30D7;&#x30ED;&#x30E2;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x904B;&#x7528;&#x30DE;&#x30CB;&#x30E5;&#x30A2;&#x30EB;</h1>
-<p class="subtitle">&#x5404;&#x5E97;&#x8217;&#x5171;&#x901A; &#x8A73;&#x7D30;&#x624B;&#x9806;&#x66F8;</p>
+<div class="header" id="hdr">
+<h1>Instagram毎週プロモーション運用マニュアル</h1>
+<p class="subtitle">各店舗共通 詳細手順書</p>
 <div class="progress-area">
 <div class="progress-counter">
-<span class="count" id="pCnt">0 / 41 &#x5B8C;&#x4E86;</span>
+<span class="count" id="pCnt">0 / 41 完了</span>
 <span class="pct" id="pPct">0%</span>
 </div>
 <div class="pbar-outer"><div class="pbar-inner" id="pBar"></div></div>
@@ -143,60 +159,54 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 <div class="ctx-hd" onclick="document.getElementById('ctxBox').classList.toggle('open')">
 <div class="ctx-hd-icon">&#x1F3AF;</div>
 <div class="ctx-hd-info">
-<div class="ctx-hd-label">&#x4ECA;&#x9031;&#x306E;&#x5BFE;&#x8C61;</div>
-<div class="ctx-hd-val" id="ctxSummary">&#x5E97;&#x8217;&#x3068;&#x9031;&#x3092;&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</div>
+<div class="ctx-hd-label">今週の対象</div>
+<div class="ctx-hd-val" id="ctxSummary">店舗と週を選択してください</div>
 </div>
 <svg class="ctx-chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
 </div>
 <div class="ctx-body"><div class="ctx-body-in">
 <div class="ctx-row">
-<div class="ctx-field">
-<label>&#x5E97;&#x8217;</label>
+<div class="ctx-field"><label>店舗</label>
 <select id="selShop">
-<option value="">&#x2500;&#x2500; &#x9078;&#x629E; &#x2500;&#x2500;</option>
-<option value="&#x5927;&#x5D53;&#x57DC;">&#x5927;&#x5D53;&#x57DC;</option>
-<option value="&#x7985;&#x5712;&#x897F;&#x6885;&#x7530;">&#x7985;&#x5712;&#x897F;&#x6885;&#x7530;</option>
-<option value="&#x7985;&#x5712;&#x5FC3;&#x658E;&#x6A4B;">&#x7985;&#x5712;&#x5FC3;&#x658E;&#x6A4B;</option>
-<option value="&#x304A;&#x3067;&#x3093;&#x30B9;&#x30BF;&#x30F3;&#x30C9;">&#x304A;&#x3067;&#x3093;&#x30B9;&#x30BF;&#x30F3;&#x30C9;</option>
-</select>
-</div>
-<div class="ctx-field">
-<label>&#x9031;</label>
+<option value="">── 選択 ──</option>
+<option value="大嵓埜">大嵓埜</option>
+<option value="禅園西梅田">禅園西梅田</option>
+<option value="禅園心斎橋">禅園心斎橋</option>
+<option value="おでんスタンド">おでんスタンド</option>
+</select></div>
+<div class="ctx-field"><label>週</label>
 <select id="selWeek">
-<option value="">&#x2500;&#x2500; &#x9078;&#x629E; &#x2500;&#x2500;</option>
-<option value="1">&#x7B2C;1&#x9031;&#xFF1A;&#x8208;&#x5473;&#x559A;&#x8D77;</option>
-<option value="2">&#x7B2C;2&#x9031;&#xFF1A;&#x6BD4;&#x8F03;&#x691C;&#x8A0E;&#x2460;</option>
-<option value="3">&#x7B2C;3&#x9031;&#xFF1A;&#x6BD4;&#x8F03;&#x691C;&#x8A0E;&#x2461;</option>
-<option value="4">&#x7B2C;4&#x9031;&#xFF1A;&#x610F;&#x601D;&#x6C7A;&#x5B9A;</option>
-<option value="5">&#x7B2C;5&#x9031;&#xFF1A;&#x4FE1;&#x983C;&#x5F37;&#x5316;</option>
-</select>
-</div>
+<option value="">── 選択 ──</option>
+<option value="1">第1週：興味喚起</option>
+<option value="2">第2週：比較検討①</option>
+<option value="3">第3週：比較検討②</option>
+<option value="4">第4週：意思決定</option>
+<option value="5">第5週：信頼強化</option>
+</select></div>
 </div>
 <div class="ctx-row">
-<div class="ctx-field">
-<label>&#x62C5;&#x5F53;&#x8005;</label>
-<input type="text" id="inpName" placeholder="&#x540D;&#x524D;&#x3092;&#x5165;&#x529B;">
-</div>
+<div class="ctx-field"><label>担当者</label>
+<input type="text" id="inpName" placeholder="名前を入力"></div>
 </div>
 <div class="ctx-script" id="ctxScript" style="display:none">
-<div class="ctx-script-label">&#x4ECA;&#x9031;&#x306E;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;</div>
+<div class="ctx-script-label">今週のスクリプト</div>
 <div class="ctx-script-body" id="ctxScriptBody"></div>
 </div>
 </div></div>
 </div>
 </div>
 <div class="controls">
-<button class="btn btn-o" id="bExpand">&#x3059;&#x3079;&#x3066;&#x5C55;&#x958B;</button>
-<button class="btn btn-o" id="bCollapse">&#x3059;&#x3079;&#x3066;&#x6298;&#x308A;&#x305F;&#x305F;&#x3080;</button>
-<button class="btn btn-d" id="bReset">&#x30EA;&#x30BB;&#x30C3;&#x30C8;</button>
+<button class="btn btn-o" id="bExpand">すべて展開</button>
+<button class="btn btn-o" id="bCollapse">すべて折りたたむ</button>
+<button class="btn btn-d" id="bReset">リセット</button>
 </div>
 <div class="container" id="app"></div>
 <div class="log-panel">
 <div class="log-box" id="logBox">
 <div class="log-hd" onclick="document.getElementById('logBox').classList.toggle('open')">
 <div class="log-icon">&#x1F4CA;</div>
-<div class="log-title">&#x5B8C;&#x4E86;&#x5C65;&#x6B74;</div>
-<span class="log-cnt" id="logCnt">0&#x4EF6;</span>
+<div class="log-title">完了履歴</div>
+<span class="log-cnt" id="logCnt">0件</span>
 <svg class="log-chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
 </div>
 <div class="log-body"><div class="log-body-in" id="logBody"></div></div>
@@ -204,17 +214,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 </div>
 <div class="modal-ov" id="mOv">
 <div class="modal">
-<h3>&#x9032;&#x6357;&#x3092;&#x30EA;&#x30BB;&#x30C3;&#x30C8;&#x3057;&#x307E;&#x3059;&#x304B;&#xFF1F;</h3>
-<p>&#x3059;&#x3079;&#x3066;&#x306E;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x304C;&#x89E3;&#x9664;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;&#x3053;&#x306E;&#x64CD;&#x4F5C;&#x306F;&#x5143;&#x306B;&#x623B;&#x305B;&#x307E;&#x305B;&#x3093;&#x3002;</p>
+<h3>進捗をリセットしますか？</h3>
+<p>今週のチェックが解除されます。履歴ログは残ります。</p>
 <div class="modal-acts">
-<button class="btn btn-o" id="bCancel">&#x30AD;&#x30E3;&#x30F3;&#x30BB;&#x30EB;</button>
-<button class="btn btn-cd" id="bConfirm">&#x30EA;&#x30BB;&#x30C3;&#x30C8;&#x3059;&#x308B;</button>
+<button class="btn btn-o" id="bCancel">キャンセル</button>
+<button class="btn btn-cd" id="bConfirm">リセットする</button>
 </div>
 </div>
 </div>
 <script>
-var K='instagram-manual-progress';
 var TOTAL=41;
+var WEEK_DATA={
+'1':{role:'興味喚起',purpose:'店の存在を印象づけ、安心感の第一印象を作る',focus:'落ち着いた空間・品のある雰囲気・静けさ・余白・大人が使える店'},
+'2':{role:'比較検討①',purpose:'料理の信頼感を高める',focus:'月替わりコース・季節の一皿・職人技・素材の良さ・盛り付けの美しさ'},
+'3':{role:'比較検討②',purpose:'実際の利用シーンを想起させる',focus:'接待・会食・顔合わせ・個室・席間・導線・静かな会話のしやすさ'},
+'4':{role:'意思決定',purpose:'今行く理由を作る',focus:'今月だけのコース・旬のピーク・今しか味わえない食材・限定性・季節感'},
+'5':{role:'信頼強化',purpose:'最終的な不安を払拭する',focus:'内観・滞在イメージ・接客の気配・利用シーンへの適合・品格'}
+};
 var S=[
 {id:'prep',day:'準備確認',title:'週の準備を始める前に確認すること',icon:'📋',steps:[
 {n:1,t:'今週が月内の第何週か確認する',d:'第1週〜第5週のどれかを確認し、今週の役割を把握する',c:'今週の役割が言える状態になっている'},
@@ -276,154 +292,276 @@ var S=[
 {n:41,t:'次週に向けて素材不足を確認する',d:'個室写真・接客感写真・旬食材アップ・空間全景など不足素材を把握',c:'次回撮影や素材依頼の必要が把握できている'}
 ]}
 ];
-var LK='instagram-manual-log';
-var st=JSON.parse(localStorage.getItem(K)||'{}');
-var logs=JSON.parse(localStorage.getItem(LK)||'[]');
-function save(){localStorage.setItem(K,JSON.stringify(st))}
-function saveLog(){localStorage.setItem(LK,JSON.stringify(logs))}
-function updProg(){
-var done=0;for(var k in st){if(st[k])done++}
-document.getElementById('pCnt').textContent=done+' / '+TOTAL+' 完了';
-document.getElementById('pPct').textContent=Math.round(done/TOTAL*100)+'%';
-document.getElementById('pBar').style.width=(done/TOTAL*100)+'%';
-S.forEach(function(sec){
-var cnt=0;sec.steps.forEach(function(s){if(st[s.n])cnt++});
-var el=document.getElementById('sp-'+sec.id);
-if(el)el.textContent=cnt+'/'+sec.steps.length;
-var pf=document.getElementById('spf-'+sec.id);
-if(pf)pf.style.width=(cnt/sec.steps.length*100)+'%';
-});
-}
-function render(){
-var app=document.getElementById('app');
-var h='';
-S.forEach(function(sec){
-h+='<div class="section" id="sec-'+sec.id+'">';
-h+='<div class="sec-hd" onclick="togSec(\''+sec.id+'\')">';
-h+='<div class="sec-icon">'+sec.icon+'</div>';
-h+='<div class="sec-info"><div class="sec-day">'+sec.day+'</div><div class="sec-title">'+sec.title+'</div></div>';
-h+='<div class="sec-meta"><span class="sec-ptxt" id="sp-'+sec.id+'">0/'+sec.steps.length+'</span>';
-h+='<div class="sec-pbar"><div class="sec-pfill" id="spf-'+sec.id+'"></div></div></div>';
-h+='<svg class="sec-chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>';
-h+='</div><div class="sec-body"><div class="sec-body-in">';
-sec.steps.forEach(function(s){
-var ck=st[s.n]?'checked':'';
-var cl=st[s.n]?' chk':'';
-h+='<div class="step'+cl+'" id="st-'+s.n+'">';
-h+='<div class="step-cb"><input type="checkbox" id="cb-'+s.n+'" '+ck+' onchange="tog('+s.n+')"><label for="cb-'+s.n+'"></label></div>';
-h+='<div class="step-ct"><div class="step-n">STEP '+s.n+'</div>';
-h+='<div class="step-t">'+s.t+'</div>';
-h+='<div class="step-det"><div class="step-desc">'+s.d+'</div>';
-h+='<div class="step-comp">'+s.c+'</div></div>';
-var info=getStepInfo(s.n);
-if(info){h+='<div class="step-who"><span class="who-name">'+esc(info.name)+'</span><span class="who-date">'+info.date+'</span>'+(info.shop?'<span class="who-date">'+esc(info.shop)+'</span>':'')+'</div>';}
-h+='</div></div>';
-});
-h+='</div></div></div>';
-});
-app.innerHTML=h;
-updProg();
-renderLog();
-}
-function renderLog(){
-var lb=document.getElementById('logBody');
-var lc=document.getElementById('logCnt');
-var dones=logs.filter(function(l){return l.action==='done'});
-lc.textContent=dones.length+'\u4EF6';
-if(dones.length===0){lb.innerHTML='<div class="log-empty">\u307E\u3060\u5C65\u6B74\u304C\u3042\u308A\u307E\u305B\u3093</div>';return}
-var h='';
-for(var i=dones.length-1;i>=0;i--){
-var l=dones[i];
-h+='<div class="log-item">';
-h+='<div class="log-item-date">'+l.date+'</div>';
-h+='<div class="log-item-body">';
-h+='<span class="log-item-step">STEP '+l.step+' '+esc(getStepTitle(l.step))+'</span><br>';
-h+='<span class="log-item-name">'+esc(l.name)+'</span>';
-if(l.shop||l.week){h+=' <span class="log-item-ctx">'+(l.shop?esc(l.shop):'')+(l.week?' \u7B2C'+l.week+'\u9031':'')+'</span>'}
-h+='</div></div>';
-}
-lb.innerHTML=h;
-}
-function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
-function getStepInfo(n){
-for(var i=logs.length-1;i>=0;i--){if(logs[i].step===n&&logs[i].action==='done')return logs[i]}
-return null;
-}
-function getStepTitle(n){
-for(var i=0;i<S.length;i++){for(var j=0;j<S[i].steps.length;j++){if(S[i].steps[j].n===n)return S[i].steps[j].t}}return '';
-}
-function fmtDate(d){var o=new Date(d);var mm=('0'+(o.getMonth()+1)).slice(-2);var dd=('0'+o.getDate()).slice(-2);var hh=('0'+o.getHours()).slice(-2);var mi=('0'+o.getMinutes()).slice(-2);return o.getFullYear()+'/'+mm+'/'+dd+' '+hh+':'+mi}
-function tog(n){
-st[n]=!st[n];save();
-var name=document.getElementById('inpName').value.trim();
-var shop=document.getElementById('selShop').value;
-var week=document.getElementById('selWeek').value;
-var now=new Date().toISOString();
-logs.push({step:n,action:st[n]?'done':'undo',name:name||'(未入力)',date:fmtDate(now),shop:shop,week:week,ts:now});
-saveLog();
-render();
-}
-function togSec(id){
-document.getElementById('sec-'+id).classList.toggle('open');
-}
-function openAll(){S.forEach(function(s){document.getElementById('sec-'+s.id).classList.add('open')})}
-function closeAll(){S.forEach(function(s){document.getElementById('sec-'+s.id).classList.remove('open')})}
-document.getElementById('bExpand').onclick=openAll;
-document.getElementById('bCollapse').onclick=closeAll;
-document.getElementById('bReset').onclick=function(){document.getElementById('mOv').classList.add('active')};
-document.getElementById('bCancel').onclick=function(){document.getElementById('mOv').classList.remove('active')};
-document.getElementById('bConfirm').onclick=function(){st={};save();document.getElementById('mOv').classList.remove('active');render()};
+// === Storage keys ===
+var CK='ig-manual-ctx';
+var LK='ig-manual-log';
+var MK='ig-manual-memos';
 
-var WEEK_DATA={
-'1':{role:'興味喚起',purpose:'店の存在を印象づけ、安心感の第一印象を作る',focus:'落ち着いた空間・品のある雰囲気・静けさ・余白・大人が使える店'},
-'2':{role:'比較検討①',purpose:'料理の信頼感を高める',focus:'月替わりコース・季節の一皿・職人技・素材の良さ・盛り付けの美しさ'},
-'3':{role:'比較検討②',purpose:'実際の利用シーンを想起させる',focus:'接待・会食・顔合わせ・個室・席間・導線・静かな会話のしやすさ'},
-'4':{role:'意思決定',purpose:'今行く理由を作る',focus:'今月だけのコース・旬のピーク・今しか味わえない食材・限定性・季節感'},
-'5':{role:'信頼強化',purpose:'最終的な不安を払拭する',focus:'内観・滞在イメージ・接客の気配・利用シーンへの適合・品格'}
-};
-var CK='instagram-manual-ctx';
+// === State ===
 var ctx=JSON.parse(localStorage.getItem(CK)||'{}');
+var logs=JSON.parse(localStorage.getItem(LK)||'[]');
+var memos=JSON.parse(localStorage.getItem(MK)||'{}');
+var openSecs={};  // track which sections are open
+var openMemos={}; // track which memo areas are open
+var firstNext=null; // first unchecked step number
+
+// === Cycle key for progress (A: weekly cycle management) ===
+function cycleKey(){
+  var shop=ctx.shop||'';var week=ctx.week||'';
+  if(!shop||!week)return '_default';
+  return shop+'_w'+week;
+}
+function loadProgress(){
+  var all=JSON.parse(localStorage.getItem('ig-manual-cycles')||'{}');
+  return all[cycleKey()]||{};
+}
+function saveProgress(st){
+  var all=JSON.parse(localStorage.getItem('ig-manual-cycles')||'{}');
+  all[cycleKey()]=st;
+  localStorage.setItem('ig-manual-cycles',JSON.stringify(all));
+}
+function listCycles(){
+  return Object.keys(JSON.parse(localStorage.getItem('ig-manual-cycles')||'{}'));
+}
+var st=loadProgress();
+
+// === Helpers ===
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function fmtDate(d){var o=new Date(d);return o.getFullYear()+'/'+('0'+(o.getMonth()+1)).slice(-2)+'/'+('0'+o.getDate()).slice(-2)+' '+('0'+o.getHours()).slice(-2)+':'+('0'+o.getMinutes()).slice(-2)}
+function getStepTitle(n){for(var i=0;i<S.length;i++){for(var j=0;j<S[i].steps.length;j++){if(S[i].steps[j].n===n)return S[i].steps[j].t}}return ''}
+function getStepInfo(n){for(var i=logs.length-1;i>=0;i--){if(logs[i].step===n&&logs[i].action==='done'&&logs[i].cycle===cycleKey())return logs[i]}return null}
+function saveCtx(){localStorage.setItem(CK,JSON.stringify(ctx))}
+function saveLog(){localStorage.setItem(LK,JSON.stringify(logs))}
+function saveMemos(){localStorage.setItem(MK,JSON.stringify(memos))}
+
+// === D: Compact header on scroll ===
+var hdr=document.getElementById('hdr');
+var lastScroll=0;
+window.addEventListener('scroll',function(){
+  var y=window.scrollY||window.pageYOffset;
+  if(y>80)hdr.classList.add('compact');
+  else hdr.classList.remove('compact');
+  lastScroll=y;
+},{passive:true});
+
+// === Progress update (no DOM rebuild) ===
+function updProg(){
+  var done=0;for(var k in st){if(st[k])done++}
+  document.getElementById('pCnt').textContent=done+' / '+TOTAL+' 完了';
+  document.getElementById('pPct').textContent=Math.round(done/TOTAL*100)+'%';
+  document.getElementById('pBar').style.width=(done/TOTAL*100)+'%';
+  S.forEach(function(sec){
+    var cnt=0;sec.steps.forEach(function(s){if(st[s.n])cnt++});
+    var el=document.getElementById('sp-'+sec.id);if(el)el.textContent=cnt+'/'+sec.steps.length;
+    var pf=document.getElementById('spf-'+sec.id);if(pf)pf.style.width=(cnt/sec.steps.length*100)+'%';
+    // E: auto-collapse completed sections + badge
+    var secEl=document.getElementById('sec-'+sec.id);
+    if(secEl){
+      if(cnt===sec.steps.length){
+        secEl.classList.add('done-sec');
+        if(!document.getElementById('badge-'+sec.id)){
+          var ti=secEl.querySelector('.sec-title');
+          if(ti&&!ti.querySelector('.sec-badge')){ti.insertAdjacentHTML('beforeend',' <span class="sec-badge complete" id="badge-'+sec.id+'">完了</span>')}
+        }
+      }else{
+        secEl.classList.remove('done-sec');
+        var bd=document.getElementById('badge-'+sec.id);if(bd)bd.remove();
+      }
+    }
+  });
+}
+
+// === C: find next step ===
+function findNextStep(){
+  firstNext=null;
+  for(var i=0;i<S.length;i++){
+    for(var j=0;j<S[i].steps.length;j++){
+      if(!st[S[i].steps[j].n]){firstNext=S[i].steps[j].n;return;}
+    }
+  }
+}
+
+// === Full render ===
+function render(){
+  findNextStep();
+  var app=document.getElementById('app');
+  var h='';
+  S.forEach(function(sec){
+    var allDone=true;sec.steps.forEach(function(s){if(!st[s.n])allDone=false});
+    var isOpen=openSecs[sec.id]===true;
+    // E: don't auto-open completed sections on initial render
+    h+='<div class="section'+(isOpen?' open':'')+(allDone?' done-sec':'')+'" id="sec-'+sec.id+'">';
+    h+='<div class="sec-hd" onclick="togSec(\''+sec.id+'\')">';
+    h+='<div class="sec-icon">'+sec.icon+'</div>';
+    h+='<div class="sec-info"><div class="sec-day">'+sec.day+'</div><div class="sec-title">'+sec.title+(allDone?' <span class="sec-badge complete" id="badge-'+sec.id+'">完了</span>':'')+'</div></div>';
+    h+='<div class="sec-meta"><span class="sec-ptxt" id="sp-'+sec.id+'">0/'+sec.steps.length+'</span>';
+    h+='<div class="sec-pbar"><div class="sec-pfill" id="spf-'+sec.id+'"></div></div></div>';
+    h+='<svg class="sec-chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>';
+    h+='</div><div class="sec-body"><div class="sec-body-in">';
+    sec.steps.forEach(function(s){
+      var ck=st[s.n]?true:false;
+      var isNext=(s.n===firstNext);
+      h+='<div class="step'+(ck?' chk':'')+(isNext?' next-step':'')+'" id="st-'+s.n+'">';
+      h+='<div class="step-cb"><input type="checkbox" id="cb-'+s.n+'"'+(ck?' checked':'')+' onchange="tog('+s.n+')"><label for="cb-'+s.n+'"></label></div>';
+      h+='<div class="step-ct"><div class="step-n">STEP '+s.n+(isNext?' <span class="next-badge">NEXT</span>':'')+'</div>';
+      h+='<div class="step-t">'+s.t+'</div>';
+      h+='<div class="step-det"><div class="step-desc">'+s.d+'</div>';
+      h+='<div class="step-comp">'+s.c+'</div></div>';
+      var info=getStepInfo(s.n);
+      if(info){h+='<div class="step-who"><span class="who-name">'+esc(info.name)+'</span><span class="who-date">'+info.date+'</span>'+(info.shop?'<span class="who-date">'+esc(info.shop)+'</span>':'')+'</div>';}
+      // F: memo toggle
+      var mk='m_'+cycleKey()+'_'+s.n;
+      var hasMemo=memos[mk]&&memos[mk].length>0;
+      var memoOpen=openMemos[s.n];
+      h+='<div class="step-memo-toggle" onclick="togMemo('+s.n+')">'+(hasMemo?'<span class="has-memo">&#x1F4DD;</span>':'&#x1F4DD;')+' メモ'+(hasMemo?' (記入済)':'')+'</div>';
+      if(memoOpen){
+        h+='<div class="step-memo-area"><textarea id="memo-'+s.n+'" onblur="saveMemo('+s.n+')" placeholder="メモを入力...">'+(memos[mk]?esc(memos[mk]):'')+'</textarea></div>';
+      }
+      h+='</div></div>';
+    });
+    h+='</div></div></div>';
+  });
+  app.innerHTML=h;
+  updProg();
+  renderLog();
+}
+// === Toggle step (no full re-render, just update affected step) ===
+function tog(n){
+  st[n]=!st[n];saveProgress(st);
+  var name=document.getElementById('inpName').value.trim();
+  var shop=ctx.shop||'';var week=ctx.week||'';
+  var now=new Date().toISOString();
+  logs.push({step:n,action:st[n]?'done':'undo',name:name||'(未入力)',date:fmtDate(now),shop:shop,week:week,cycle:cycleKey(),ts:now});
+  saveLog();
+  // Update just this step's DOM
+  var el=document.getElementById('st-'+n);
+  if(el){
+    if(st[n]){el.classList.add('chk');el.classList.remove('next-step')}
+    else{el.classList.remove('chk')}
+    // Update who info
+    var existing=el.querySelector('.step-who');
+    if(st[n]){
+      var whoHtml='<div class="step-who"><span class="who-name">'+esc(name||'(未入力)')+'</span><span class="who-date">'+fmtDate(now)+'</span>'+(shop?'<span class="who-date">'+esc(shop)+'</span>':'')+'</div>';
+      if(existing)existing.outerHTML=whoHtml;
+      else{var det=el.querySelector('.step-det');if(det)det.insertAdjacentHTML('afterend',whoHtml)}
+    }
+  }
+  // C: update NEXT badge
+  findNextStep();
+  document.querySelectorAll('.next-step').forEach(function(e){e.classList.remove('next-step')});
+  document.querySelectorAll('.next-badge').forEach(function(e){e.remove()});
+  if(firstNext){
+    var nEl=document.getElementById('st-'+firstNext);
+    if(nEl){nEl.classList.add('next-step');var sn=nEl.querySelector('.step-n');if(sn&&!sn.querySelector('.next-badge'))sn.insertAdjacentHTML('beforeend',' <span class="next-badge">NEXT</span>')}
+  }
+  updProg();
+  renderLog();
+}
+
+// === Section toggle (preserves state) ===
+function togSec(id){
+  var el=document.getElementById('sec-'+id);
+  if(el){el.classList.toggle('open');openSecs[id]=el.classList.contains('open')}
+}
+function openAll(){S.forEach(function(s){openSecs[s.id]=true;var e=document.getElementById('sec-'+s.id);if(e)e.classList.add('open')})}
+function closeAll(){S.forEach(function(s){openSecs[s.id]=false;var e=document.getElementById('sec-'+s.id);if(e)e.classList.remove('open')})}
+
+// === F: Memo functions ===
+function togMemo(n){
+  openMemos[n]=!openMemos[n];
+  render(); // need re-render to show/hide textarea
+}
+function saveMemo(n){
+  var ta=document.getElementById('memo-'+n);
+  if(ta){var mk='m_'+cycleKey()+'_'+n;memos[mk]=ta.value;saveMemos()}
+}
+
+// === B: CSV export ===
+function exportCSV(){
+  var dones=logs.filter(function(l){return l.action==='done'});
+  if(!dones.length){alert('履歴がありません');return}
+  var csv='\uFEFF日時,ステップ番号,ステップ名,担当者,店舗,週,サイクル\n';
+  dones.forEach(function(l){
+    csv+='"'+l.date+'",'+l.step+',"'+getStepTitle(l.step).replace(/"/g,'""')+'","'+(l.name||'').replace(/"/g,'""')+'","'+(l.shop||'')+'","'+(l.week?'第'+l.week+'週':'')+'","'+(l.cycle||'')+'"\n';
+  });
+  var blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='instagram_manual_log_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();URL.revokeObjectURL(a.href);
+}
+
+// === Log render ===
+function renderLog(){
+  var lb=document.getElementById('logBody');
+  var lc=document.getElementById('logCnt');
+  var dones=logs.filter(function(l){return l.action==='done'});
+  lc.textContent=dones.length+'件';
+  if(!dones.length){lb.innerHTML='<div class="log-empty">まだ履歴がありません</div>';return}
+  var h='<div class="log-actions"><button class="btn btn-g" onclick="exportCSV()">CSV ダウンロード</button></div>';
+  var shown=dones.slice(-50).reverse();
+  shown.forEach(function(l){
+    h+='<div class="log-item"><div class="log-item-date">'+l.date+'</div><div class="log-item-body">';
+    h+='<span class="log-item-step">STEP '+l.step+' '+esc(getStepTitle(l.step))+'</span><br>';
+    h+='<span class="log-item-name">'+esc(l.name)+'</span>';
+    if(l.shop||l.week)h+=' <span class="log-item-ctx">'+(l.shop?esc(l.shop):'')+(l.week?' 第'+l.week+'週':'')+'</span>';
+    h+='</div></div>';
+  });
+  if(dones.length>50)h+='<div class="log-empty">最新50件を表示中（全'+dones.length+'件）</div>';
+  lb.innerHTML=h;
+}
+
+// === Context panel ===
 var selShop=document.getElementById('selShop');
 var selWeek=document.getElementById('selWeek');
 var inpName=document.getElementById('inpName');
 if(ctx.shop)selShop.value=ctx.shop;
 if(ctx.week)selWeek.value=ctx.week;
 if(ctx.name)inpName.value=ctx.name;
-inpName.oninput=function(){ctx.name=inpName.value;localStorage.setItem(CK,JSON.stringify(ctx))};
+inpName.oninput=function(){ctx.name=inpName.value;saveCtx()};
+
 function updCtx(){
-var shop=selShop.value;var week=selWeek.value;
-ctx={shop:shop,week:week};localStorage.setItem(CK,JSON.stringify(ctx));
-var sum=document.getElementById('ctxSummary');
-var sc=document.getElementById('ctxScript');
-var sb=document.getElementById('ctxScriptBody');
-if(shop&&week){
-var w=WEEK_DATA[week];
-sum.textContent=shop+' \uFF5C \u7B2C'+week+'\u9031 '+w.role;
-sc.style.display='block';
-sb.innerHTML='<div class="role-line"><span class="tag">\u5E97\u8217</span>'+shop+'</div>'
-+'<div class="role-line"><span class="tag">\u9031</span>\u7B2C'+week+'\u9031\uFF1A'+w.role+'</div>'
-+'<div class="role-line"><span class="tag">\u76EE\u7684</span>'+w.purpose+'</div>'
-+'<div class="role-line"><span class="tag">\u8A34\u6C42\u8EF8</span>'+w.focus+'</div>'
-+'<div class="role-line"><span class="tag">\u30BF\u30FC\u30B2\u30C3\u30C8</span>30\u301C50\u4EE3\u7D4C\u55B6\u8005\u306E\u63A5\u5F85\u300140\u4EE3\u4EE5\u4E0A\u306E\u4F1A\u98DF</div>'
-+'<div class="role-line"><span class="tag">\u6700\u91CD\u8981\u4FA1\u5024</span>\u5931\u6557\u3057\u306A\u3044\u5B89\u5FC3\u611F</div>';
-}else if(shop){
-sum.textContent=shop+' \uFF5C \u9031\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044';
-sc.style.display='none';
-}else if(week){
-var w=WEEK_DATA[week];
-sum.textContent='\u7B2C'+week+'\u9031 '+w.role+' \uFF5C \u5E97\u8217\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044';
-sc.style.display='none';
-}else{
-sum.textContent='\u5E97\u8217\u3068\u9031\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044';
-sc.style.display='none';
-}
+  var shop=selShop.value;var week=selWeek.value;
+  ctx.shop=shop;ctx.week=week;saveCtx();
+  // A: switch progress to this cycle
+  st=loadProgress();
+  var sum=document.getElementById('ctxSummary');
+  var sc=document.getElementById('ctxScript');
+  var sb=document.getElementById('ctxScriptBody');
+  if(shop&&week){
+    var w=WEEK_DATA[week];
+    sum.textContent=shop+' ｜ 第'+week+'週 '+w.role;
+    sc.style.display='block';
+    sb.innerHTML='<div class="role-line"><span class="tag">店舗</span>'+esc(shop)+'</div>'
+    +'<div class="role-line"><span class="tag">週</span>第'+week+'週：'+w.role+'</div>'
+    +'<div class="role-line"><span class="tag">目的</span>'+w.purpose+'</div>'
+    +'<div class="role-line"><span class="tag">訴求軸</span>'+w.focus+'</div>'
+    +'<div class="role-line"><span class="tag">ターゲット</span>30〜50代経営者の接待、40代以上の会食</div>'
+    +'<div class="role-line"><span class="tag">最重要価値</span>失敗しない安心感</div>';
+  }else{
+    sum.textContent=(shop||'店舗')+'と'+(week?'第'+week+'週':'週')+'を選択してください';
+    sc.style.display='none';
+  }
+  render();
 }
 selShop.onchange=updCtx;
 selWeek.onchange=updCtx;
+
+// === Button handlers ===
+document.getElementById('bExpand').onclick=openAll;
+document.getElementById('bCollapse').onclick=closeAll;
+document.getElementById('bReset').onclick=function(){document.getElementById('mOv').classList.add('active')};
+document.getElementById('bCancel').onclick=function(){document.getElementById('mOv').classList.remove('active')};
+document.getElementById('bConfirm').onclick=function(){st={};saveProgress(st);document.getElementById('mOv').classList.remove('active');render()};
+
+// === Initial render ===
 updCtx();
+// Auto-open first incomplete section
+var autoOpened=false;
+S.forEach(function(sec){
+  var allDone=true;sec.steps.forEach(function(s){if(!st[s.n])allDone=false});
+  if(!autoOpened&&!allDone){openSecs[sec.id]=true;autoOpened=true}
+});
 render();
-var opened=false;
-S.forEach(function(sec){if(!opened&&sec.steps.some(function(s){return !st[s.n]})){togSec(sec.id);opened=true}});
 </script>
 </body>
 </html>
