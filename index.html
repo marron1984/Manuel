@@ -70,10 +70,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 .modal-acts .btn{padding:.6rem 1.5rem;font-size:.85rem}
 .btn-cd{background:#c0392b;color:var(--white)}
 .btn-cd:hover{background:#a93226}
+.ctx-panel{max-width:800px;margin:1rem auto .5rem;padding:0 1rem}
+.ctx-box{background:var(--white);border-radius:var(--rad);box-shadow:var(--shadow);border-left:4px solid var(--gold);overflow:hidden}
+.ctx-hd{display:flex;align-items:center;padding:1rem 1.25rem;cursor:pointer;user-select:none;gap:.75rem;transition:background var(--tr)}
+.ctx-hd:hover{background:var(--g50)}
+.ctx-hd-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--white);flex-shrink:0}
+.ctx-hd-info{flex:1}
+.ctx-hd-label{font-size:.7rem;font-weight:600;color:var(--gold-dark);letter-spacing:.06em}
+.ctx-hd-val{font-size:1rem;font-weight:700;color:var(--navy)}
+.ctx-chev{width:20px;height:20px;color:var(--g400);transition:transform var(--tr);flex-shrink:0}
+.ctx-box.open .ctx-chev{transform:rotate(180deg)}
+.ctx-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.ctx-box.open .ctx-body{max-height:800px}
+.ctx-body-in{padding:0 1.25rem 1.25rem}
+.ctx-row{display:flex;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap}
+.ctx-field{flex:1;min-width:140px}
+.ctx-field label{display:block;font-size:.75rem;font-weight:600;color:var(--g600);margin-bottom:.3rem}
+.ctx-field select{width:100%;padding:.5rem .75rem;border:1px solid var(--g300);border-radius:6px;font-size:.88rem;font-family:inherit;color:var(--text);background:var(--white);cursor:pointer;transition:border-color var(--tr)}
+.ctx-field select:focus{outline:none;border-color:var(--gold)}
+.ctx-script{margin-top:.75rem;background:var(--g50);border-radius:6px;padding:1rem;border:1px solid var(--g200)}
+.ctx-script-label{font-size:.7rem;font-weight:700;color:var(--gold-dark);letter-spacing:.06em;margin-bottom:.5rem}
+.ctx-script-body{font-size:.85rem;line-height:1.8;color:var(--text)}
+.ctx-script-body .tag{display:inline-block;background:var(--navy);color:var(--gold-light);font-size:.7rem;font-weight:600;padding:.1rem .5rem;border-radius:4px;margin-right:.3rem}
+.ctx-script-body .role-line{margin-bottom:.25rem}
 @media(max-width:600px){
 .header{padding:1.5rem 1rem 1.2rem}.header h1{font-size:1.15rem}
 .sec-hd{padding:.85rem 1rem}.sec-icon{width:36px;height:36px;font-size:1rem}
 .sec-title{font-size:.88rem}.sec-body-in{padding:0 1rem .75rem}.sec-pbar{width:36px}
+.ctx-row{flex-direction:column}
 }
 </style>
 </head>
@@ -83,10 +107,51 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 <p class="subtitle">&#x5404;&#x5E97;&#x8217;&#x5171;&#x901A; &#x8A73;&#x7D30;&#x624B;&#x9806;&#x66F8;</p>
 <div class="progress-area">
 <div class="progress-counter">
-<span class="count" id="pCnt">0 / 40 &#x5B8C;&#x4E86;</span>
+<span class="count" id="pCnt">0 / 41 &#x5B8C;&#x4E86;</span>
 <span class="pct" id="pPct">0%</span>
 </div>
 <div class="pbar-outer"><div class="pbar-inner" id="pBar"></div></div>
+</div>
+</div>
+<div class="ctx-panel">
+<div class="ctx-box open" id="ctxBox">
+<div class="ctx-hd" onclick="document.getElementById('ctxBox').classList.toggle('open')">
+<div class="ctx-hd-icon">&#x1F3AF;</div>
+<div class="ctx-hd-info">
+<div class="ctx-hd-label">&#x4ECA;&#x9031;&#x306E;&#x5BFE;&#x8C61;</div>
+<div class="ctx-hd-val" id="ctxSummary">&#x5E97;&#x8217;&#x3068;&#x9031;&#x3092;&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</div>
+</div>
+<svg class="ctx-chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+</div>
+<div class="ctx-body"><div class="ctx-body-in">
+<div class="ctx-row">
+<div class="ctx-field">
+<label>&#x5E97;&#x8217;</label>
+<select id="selShop">
+<option value="">&#x2500;&#x2500; &#x9078;&#x629E; &#x2500;&#x2500;</option>
+<option value="&#x5927;&#x5D53;&#x57DC;">&#x5927;&#x5D53;&#x57DC;</option>
+<option value="&#x7985;&#x5712;&#x897F;&#x6885;&#x7530;">&#x7985;&#x5712;&#x897F;&#x6885;&#x7530;</option>
+<option value="&#x7985;&#x5712;&#x5FC3;&#x658E;&#x6A4B;">&#x7985;&#x5712;&#x5FC3;&#x658E;&#x6A4B;</option>
+<option value="&#x304A;&#x3067;&#x3093;&#x30B9;&#x30BF;&#x30F3;&#x30C9;">&#x304A;&#x3067;&#x3093;&#x30B9;&#x30BF;&#x30F3;&#x30C9;</option>
+</select>
+</div>
+<div class="ctx-field">
+<label>&#x9031;</label>
+<select id="selWeek">
+<option value="">&#x2500;&#x2500; &#x9078;&#x629E; &#x2500;&#x2500;</option>
+<option value="1">&#x7B2C;1&#x9031;&#xFF1A;&#x8208;&#x5473;&#x559A;&#x8D77;</option>
+<option value="2">&#x7B2C;2&#x9031;&#xFF1A;&#x6BD4;&#x8F03;&#x691C;&#x8A0E;&#x2460;</option>
+<option value="3">&#x7B2C;3&#x9031;&#xFF1A;&#x6BD4;&#x8F03;&#x691C;&#x8A0E;&#x2461;</option>
+<option value="4">&#x7B2C;4&#x9031;&#xFF1A;&#x610F;&#x601D;&#x6C7A;&#x5B9A;</option>
+<option value="5">&#x7B2C;5&#x9031;&#xFF1A;&#x4FE1;&#x983C;&#x5F37;&#x5316;</option>
+</select>
+</div>
+</div>
+<div class="ctx-script" id="ctxScript" style="display:none">
+<div class="ctx-script-label">&#x4ECA;&#x9031;&#x306E;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;</div>
+<div class="ctx-script-body" id="ctxScriptBody"></div>
+</div>
+</div></div>
 </div>
 </div>
 <div class="controls">
@@ -107,7 +172,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 </div>
 <script>
 var K='instagram-manual-progress';
-var TOTAL=40;
+var TOTAL=41;
 var S=[
 {id:'prep',day:'準備確認',title:'週の準備を始める前に確認すること',icon:'📋',steps:[
 {n:1,t:'今週が月内の第何週か確認する',d:'第1週〜第5週のどれかを確認し、今週の役割を把握する',c:'今週の役割が言える状態になっている'},
@@ -130,42 +195,43 @@ var S=[
 {n:14,t:'Claudeに最初の確認指示を出す',d:'リポジトリ全体を確認させ、使用画像・メモ・前提情報の整理を依頼する',c:'Claudeが対象リポジトリと画像内容を理解した要約を返している'},
 {n:15,t:'Claudeにインデックス作成指示を出す',d:'素材一覧・分類・訴求軸・不足素材・制作時の注意点を整理させる',c:'Claudeによる素材整理と訴求軸整理が完了している'},
 {n:16,t:'Claudeに制作指示を出す',d:'動画構成案・テロップ案・キャプション案3パターン・ハッシュタグ案・素材選定・BGM方向性を依頼',c:'Claudeに制作依頼が送信されている'},
-{n:17,t:'Claudeの出力を保存する',d:'構成案・テロップ案・キャプション案・ハッシュタグ案・BGM方向性をcaptions/drafts等に保存',c:'Claudeの出力が後から見返せる状態で保存されている'}
+{n:17,t:'動画に合うキャプションとハッシュタグを生成する',d:'今回の動画内容・訴求軸・ターゲットに合わせて、投稿キャプションとハッシュタグ（5個程度）をClaudeに生成させる。店舗名系・エリア系・利用シーン系をバランスよく含める',c:'動画に合ったキャプション1本とハッシュタグ5個程度が生成されている'},
+{n:18,t:'Claudeの出力を保存する',d:'構成案・テロップ案・キャプション案・ハッシュタグ案・BGM方向性をcaptions/drafts等に保存',c:'Claudeの出力が後から見返せる状態で保存されている'}
 ]},
 {id:'sun',day:'日曜日',title:'修正',icon:'✏️',steps:[
-{n:18,t:'Claudeの構成案を読む',d:'流れの自然さ・主役の明確さ・冒頭3秒の強さ・CTAの有無を確認',c:'構成の全体像が理解できている'},
-{n:19,t:'採用する構成を1つ選ぶ',d:'安心感の強さ・接待想起・情報量・予約導線・店の格との整合を基準に選定',c:'採用構成が1つ決まっている'},
-{n:20,t:'テロップを削る',d:'繰り返し・読まないと成立しない・長すぎる・説明くさい・軽い表現を削除',c:'テロップが最小限になっている'},
-{n:21,t:'キャプションを整える',d:'1行目の引き・軽すぎない言葉・接待文脈・予約導線・読みやすさを確認',c:'投稿本文として使えるキャプションが1本完成している'},
-{n:22,t:'ハッシュタグを整理する',d:'店舗名系・エリア系・利用シーン系・料理ジャンル系を整理',c:'今回使うハッシュタグが確定している'},
-{n:23,t:'必要ならClaudeに再修正依頼する',d:'接待利用の伝わり方・トーン・テロップ量・予約導線の強さなどを調整依頼',c:'必要な修正が反映されている'}
+{n:19,t:'Claudeの構成案を読む',d:'流れの自然さ・主役の明確さ・冒頭3秒の強さ・CTAの有無を確認',c:'構成の全体像が理解できている'},
+{n:20,t:'採用する構成を1つ選ぶ',d:'安心感の強さ・接待想起・情報量・予約導線・店の格との整合を基準に選定',c:'採用構成が1つ決まっている'},
+{n:21,t:'テロップを削る',d:'繰り返し・読まないと成立しない・長すぎる・説明くさい・軽い表現を削除',c:'テロップが最小限になっている'},
+{n:22,t:'キャプションを整える',d:'1行目の引き・軽すぎない言葉・接待文脈・予約導線・読みやすさを確認',c:'投稿本文として使えるキャプションが1本完成している'},
+{n:23,t:'ハッシュタグを整理する',d:'店舗名系・エリア系・利用シーン系・料理ジャンル系を整理',c:'今回使うハッシュタグが確定している'},
+{n:24,t:'必要ならClaudeに再修正依頼する',d:'接待利用の伝わり方・トーン・テロップ量・予約導線の強さなどを調整依頼',c:'必要な修正が反映されている'}
 ]},
 {id:'mon',day:'月曜日',title:'初稿提出',icon:'📄',steps:[
-{n:24,t:'今週の初稿データをまとめる',d:'採用素材・構成案・テロップ案・キャプション案・ハッシュタグ・BGM候補を一箇所に集約',c:'初稿一式が一箇所にまとまっている'},
-{n:25,t:'初稿の状態を確認する',d:'伝える内容の明確さ・素材確定・キャプション確定・CTA有無・修正ポイント言語化',c:'他人に見せても内容がわかる状態になっている'},
-{n:26,t:'初稿提出済みとして保存する',d:'draft_v1 / first_draft_complete / captions_v1 等で保存',c:'初稿が完成版と混ざらない状態で保存されている'}
+{n:25,t:'今週の初稿データをまとめる',d:'採用素材・構成案・テロップ案・キャプション案・ハッシュタグ・BGM候補を一箇所に集約',c:'初稿一式が一箇所にまとまっている'},
+{n:26,t:'初稿の状態を確認する',d:'伝える内容の明確さ・素材確定・キャプション確定・CTA有無・修正ポイント言語化',c:'他人に見せても内容がわかる状態になっている'},
+{n:27,t:'初稿提出済みとして保存する',d:'draft_v1 / first_draft_complete / captions_v1 等で保存',c:'初稿が完成版と混ざらない状態で保存されている'}
 ]},
 {id:'tue',day:'火曜日',title:'チェックバック',icon:'🔍',steps:[
-{n:27,t:'1日置いた目で見直す',d:'安心感・接待想起・説明過多・雰囲気だけで終わっていないか・予約導線を客観確認',c:'初稿を客観的に評価できている'},
-{n:28,t:'チェックバック項目を確認する',d:'内容面（安心感・接待・利用シーン）、表現面（品格・テロップ量・日本語）、導線面（CTA・予約サイト）',c:'修正点が明確になっている'},
-{n:29,t:'修正が必要な箇所だけ直す',d:'テロップ削減・キャプション1行目強化・接待文脈追加・CTA明確化・素材順変更など',c:'最終版に近い状態になっている'}
+{n:28,t:'1日置いた目で見直す',d:'安心感・接待想起・説明過多・雰囲気だけで終わっていないか・予約導線を客観確認',c:'初稿を客観的に評価できている'},
+{n:29,t:'チェックバック項目を確認する',d:'内容面（安心感・接待・利用シーン）、表現面（品格・テロップ量・日本語）、導線面（CTA・予約サイト）',c:'修正点が明確になっている'},
+{n:30,t:'修正が必要な箇所だけ直す',d:'テロップ削減・キャプション1行目強化・接待文脈追加・CTA明確化・素材順変更など',c:'最終版に近い状態になっている'}
 ]},
 {id:'wed',day:'水曜日',title:'納品',icon:'📦',steps:[
-{n:30,t:'最終版データを確定する',d:'最終構成・素材順・キャプション・ハッシュタグ・BGM・CTAをすべてFIX',c:'投稿に必要な要素が全部FIXしている'},
-{n:31,t:'保存先を整える',d:'投稿動画・キャプション本文・ハッシュタグ・サムネ候補・予約導線文言をまとめる',c:'投稿当日に探し物が発生しない状態になっている'},
-{n:32,t:'最終チェックを行う',d:'店名・料理名・地名の誤字、日本語の自然さ、接待適合、予約導線を最終確認',c:'投稿して問題ないと判断できる'}
+{n:31,t:'最終版データを確定する',d:'最終構成・素材順・キャプション・ハッシュタグ・BGM・CTAをすべてFIX',c:'投稿に必要な要素が全部FIXしている'},
+{n:32,t:'保存先を整える',d:'投稿動画・キャプション本文・ハッシュタグ・サムネ候補・予約導線文言をまとめる',c:'投稿当日に探し物が発生しない状態になっている'},
+{n:33,t:'最終チェックを行う',d:'店名・料理名・地名の誤字、日本語の自然さ、接待適合、予約導線を最終確認',c:'投稿して問題ないと判断できる'}
 ]},
 {id:'thu',day:'木曜日',title:'投稿',icon:'🚀',steps:[
-{n:33,t:'投稿時間を確認する',d:'投稿時間は木曜日21:00',c:'投稿時間が確認できている'},
-{n:34,t:'投稿データを開く',d:'動画・キャプション・ハッシュタグ・予約導線文言を準備',c:'投稿素材一式がすぐ使える状態になっている'},
-{n:35,t:'投稿前に最後の誤字確認をする',d:'店舗名・料理名・漢字・CTA・ハッシュタグ表記を確認',c:'誤字脱字がない'},
-{n:36,t:'投稿する',d:'完成動画・最終キャプション・ハッシュタグ・予約サイト導線を入れて公開',c:'投稿が公開されている'},
-{n:37,t:'投稿後に見え方を確認する',d:'サムネ・改行崩れ・キャプションの読みにくさ・ハッシュタグ・全体の格を確認',c:'投稿後表示に大きな問題がない'}
+{n:34,t:'投稿時間を確認する',d:'投稿時間は木曜日21:00',c:'投稿時間が確認できている'},
+{n:35,t:'投稿データを開く',d:'動画・キャプション・ハッシュタグ・予約導線文言を準備',c:'投稿素材一式がすぐ使える状態になっている'},
+{n:36,t:'投稿前に最後の誤字確認をする',d:'店舗名・料理名・漢字・CTA・ハッシュタグ表記を確認',c:'誤字脱字がない'},
+{n:37,t:'投稿する',d:'完成動画・最終キャプション・ハッシュタグ・予約サイト導線を入れて公開',c:'投稿が公開されている'},
+{n:38,t:'投稿後に見え方を確認する',d:'サムネ・改行崩れ・キャプションの読みにくさ・ハッシュタグ・全体の格を確認',c:'投稿後表示に大きな問題がない'}
 ]},
 {id:'close',day:'週の締め',title:'記録・振り返り',icon:'📝',steps:[
-{n:38,t:'使用素材を記録する',d:'投稿日・店舗名・週の役割・メイン訴求・使用素材名・キャプション冒頭・ハッシュタグ・BGM',c:'後から見返せる記録が残っている'},
-{n:39,t:'良かった点と改善点を1つずつ残す',d:'例：良かった点＝空間訴求が強く接待感が出た、改善点＝テロップが少し多かった',c:'次回に活かせるメモが残っている'},
-{n:40,t:'次週に向けて素材不足を確認する',d:'個室写真・接客感写真・旬食材アップ・空間全景など不足素材を把握',c:'次回撮影や素材依頼の必要が把握できている'}
+{n:39,t:'使用素材を記録する',d:'投稿日・店舗名・週の役割・メイン訴求・使用素材名・キャプション冒頭・ハッシュタグ・BGM',c:'後から見返せる記録が残っている'},
+{n:40,t:'良かった点と改善点を1つずつ残す',d:'例：良かった点＝空間訴求が強く接待感が出た、改善点＝テロップが少し多かった',c:'次回に活かせるメモが残っている'},
+{n:41,t:'次週に向けて素材不足を確認する',d:'個室写真・接客感写真・旬食材アップ・空間全景など不足素材を把握',c:'次回撮影や素材依頼の必要が把握できている'}
 ]}
 ];
 var st=JSON.parse(localStorage.getItem(K)||'{}');
@@ -227,6 +293,50 @@ document.getElementById('bCollapse').onclick=closeAll;
 document.getElementById('bReset').onclick=function(){document.getElementById('mOv').classList.add('active')};
 document.getElementById('bCancel').onclick=function(){document.getElementById('mOv').classList.remove('active')};
 document.getElementById('bConfirm').onclick=function(){st={};save();document.getElementById('mOv').classList.remove('active');render()};
+var WEEK_DATA={
+'1':{role:'興味喚起',purpose:'店の存在を印象づけ、安心感の第一印象を作る',focus:'落ち着いた空間・品のある雰囲気・静けさ・余白・大人が使える店'},
+'2':{role:'比較検討①',purpose:'料理の信頼感を高める',focus:'月替わりコース・季節の一皿・職人技・素材の良さ・盛り付けの美しさ'},
+'3':{role:'比較検討②',purpose:'実際の利用シーンを想起させる',focus:'接待・会食・顔合わせ・個室・席間・導線・静かな会話のしやすさ'},
+'4':{role:'意思決定',purpose:'今行く理由を作る',focus:'今月だけのコース・旬のピーク・今しか味わえない食材・限定性・季節感'},
+'5':{role:'信頼強化',purpose:'最終的な不安を払拭する',focus:'内観・滞在イメージ・接客の気配・利用シーンへの適合・品格'}
+};
+var CK='instagram-manual-ctx';
+var ctx=JSON.parse(localStorage.getItem(CK)||'{}');
+var selShop=document.getElementById('selShop');
+var selWeek=document.getElementById('selWeek');
+if(ctx.shop)selShop.value=ctx.shop;
+if(ctx.week)selWeek.value=ctx.week;
+function updCtx(){
+var shop=selShop.value;var week=selWeek.value;
+ctx={shop:shop,week:week};localStorage.setItem(CK,JSON.stringify(ctx));
+var sum=document.getElementById('ctxSummary');
+var sc=document.getElementById('ctxScript');
+var sb=document.getElementById('ctxScriptBody');
+if(shop&&week){
+var w=WEEK_DATA[week];
+sum.textContent=shop+' \uFF5C \u7B2C'+week+'\u9031 '+w.role;
+sc.style.display='block';
+sb.innerHTML='<div class="role-line"><span class="tag">\u5E97\u8217</span>'+shop+'</div>'
++'<div class="role-line"><span class="tag">\u9031</span>\u7B2C'+week+'\u9031\uFF1A'+w.role+'</div>'
++'<div class="role-line"><span class="tag">\u76EE\u7684</span>'+w.purpose+'</div>'
++'<div class="role-line"><span class="tag">\u8A34\u6C42\u8EF8</span>'+w.focus+'</div>'
++'<div class="role-line"><span class="tag">\u30BF\u30FC\u30B2\u30C3\u30C8</span>30\u301C50\u4EE3\u7D4C\u55B6\u8005\u306E\u63A5\u5F85\u300140\u4EE3\u4EE5\u4E0A\u306E\u4F1A\u98DF</div>'
++'<div class="role-line"><span class="tag">\u6700\u91CD\u8981\u4FA1\u5024</span>\u5931\u6557\u3057\u306A\u3044\u5B89\u5FC3\u611F</div>';
+}else if(shop){
+sum.textContent=shop+' \uFF5C \u9031\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044';
+sc.style.display='none';
+}else if(week){
+var w=WEEK_DATA[week];
+sum.textContent='\u7B2C'+week+'\u9031 '+w.role+' \uFF5C \u5E97\u8217\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044';
+sc.style.display='none';
+}else{
+sum.textContent='\u5E97\u8217\u3068\u9031\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044';
+sc.style.display='none';
+}
+}
+selShop.onchange=updCtx;
+selWeek.onchange=updCtx;
+updCtx();
 render();
 var opened=false;
 S.forEach(function(sec){if(!opened&&sec.steps.some(function(s){return !st[s.n]})){togSec(sec.id);opened=true}});
