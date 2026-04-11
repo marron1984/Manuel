@@ -105,6 +105,55 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 .step-memo-area textarea{width:100%;min-height:48px;padding:.4rem .6rem;border:1px solid var(--g300);border-radius:6px;font-size:.8rem;font-family:inherit;color:var(--text);resize:vertical;transition:border-color var(--tr);line-height:1.5}
 .step-memo-area textarea:focus{outline:none;border-color:var(--gold)}
 .log-panel{max-width:800px;margin:0 auto 2rem;padding:0 1rem}
+.post-panel{max-width:800px;margin:0 auto 1rem;padding:0 1rem}
+.post-box{background:var(--white);border-radius:var(--rad);box-shadow:var(--shadow);border-left:4px solid #27ae60;overflow:hidden}
+.post-hd{display:flex;align-items:center;padding:1rem 1.25rem;cursor:pointer;user-select:none;gap:.75rem;transition:background var(--tr)}
+.post-hd:hover{background:var(--g50)}
+.post-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:linear-gradient(135deg,#27ae60,#1e8449);color:var(--white);flex-shrink:0}
+.post-info{flex:1}
+.post-label{font-size:.7rem;font-weight:600;color:#1e8449;letter-spacing:.06em}
+.post-val{font-size:1rem;font-weight:700;color:var(--navy)}
+.post-chev{width:20px;height:20px;color:var(--g400);transition:transform var(--tr);flex-shrink:0}
+.post-box.open .post-chev{transform:rotate(180deg)}
+.post-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.post-box.open .post-body{max-height:1500px}
+.post-body-in{padding:0 1.25rem 1.25rem}
+.post-field{margin-bottom:.85rem}
+.post-field label{display:block;font-size:.75rem;font-weight:600;color:var(--g600);margin-bottom:.3rem}
+.post-field input[type=text],.post-field input[type=date],.post-field textarea{width:100%;padding:.5rem .75rem;border:1px solid var(--g300);border-radius:6px;font-size:.85rem;font-family:inherit;color:var(--text);background:var(--white);transition:border-color var(--tr)}
+.post-field textarea{resize:vertical;min-height:60px;line-height:1.5}
+.post-field input:focus,.post-field textarea:focus{outline:none;border-color:#27ae60}
+.post-actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem}
+.btn-save{background:#27ae60;color:var(--white);border:1px solid #27ae60}
+.btn-save:hover{background:#1e8449}
+.post-saved{font-size:.75rem;color:#1e8449;margin-left:.5rem;align-self:center}
+.archive-panel{max-width:800px;margin:0 auto 2rem;padding:0 1rem}
+.archive-box{background:var(--white);border-radius:var(--rad);box-shadow:var(--shadow);overflow:hidden}
+.archive-hd{display:flex;align-items:center;padding:1rem 1.25rem;cursor:pointer;user-select:none;gap:.75rem;transition:background var(--tr)}
+.archive-hd:hover{background:var(--g50)}
+.archive-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:var(--navy);color:var(--gold-light);flex-shrink:0}
+.archive-title{flex:1;font-size:.95rem;font-weight:700;color:var(--navy)}
+.archive-cnt{font-size:.75rem;color:var(--g500)}
+.archive-chev{width:20px;height:20px;color:var(--g400);transition:transform var(--tr);flex-shrink:0}
+.archive-box.open .archive-chev{transform:rotate(180deg)}
+.archive-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.archive-box.open .archive-body{max-height:8000px}
+.archive-body-in{padding:0 1.25rem 1rem}
+.archive-empty{padding:1rem 0;text-align:center;color:var(--g500);font-size:.85rem}
+.archive-card{border:1px solid var(--g200);border-radius:8px;padding:1rem;margin-top:.75rem;background:var(--g50)}
+.archive-card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;flex-wrap:wrap;gap:.4rem}
+.archive-card-shop{font-size:.9rem;font-weight:700;color:var(--navy)}
+.archive-card-meta{font-size:.7rem;color:var(--g600);background:var(--white);padding:.15rem .5rem;border-radius:4px}
+.archive-card-date{font-size:.75rem;color:var(--g500);margin-bottom:.5rem}
+.archive-card-row{font-size:.8rem;line-height:1.6;margin-bottom:.4rem}
+.archive-card-row .lbl{display:inline-block;font-size:.65rem;font-weight:700;color:var(--gold-dark);background:var(--white);padding:.1rem .4rem;border-radius:3px;margin-right:.4rem;vertical-align:middle}
+.archive-card-text{white-space:pre-wrap;color:var(--text);background:var(--white);padding:.5rem .6rem;border-radius:4px;border:1px solid var(--g200);font-size:.8rem;line-height:1.6}
+.archive-card-url{color:#1e8449;text-decoration:underline;word-break:break-all}
+.archive-actions{display:flex;gap:.4rem;margin-top:.6rem;flex-wrap:wrap}
+.btn-mini{padding:.3rem .7rem;font-size:.72rem;border:1px solid var(--g300);background:var(--white);color:var(--g700);border-radius:4px;cursor:pointer;font-family:inherit;transition:var(--tr)}
+.btn-mini:hover{background:var(--g100)}
+.btn-mini.del{color:#c0392b;border-color:#e8c4c0}
+.btn-mini.del:hover{background:#fdf0ef}
 .log-box{background:var(--white);border-radius:var(--rad);box-shadow:var(--shadow);overflow:hidden}
 .log-hd{display:flex;align-items:center;padding:1rem 1.25rem;cursor:pointer;user-select:none;gap:.75rem;transition:background var(--tr)}
 .log-hd:hover{background:var(--g50)}
@@ -200,7 +249,46 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Goth
 <button class="btn btn-o" id="bCollapse">すべて折りたたむ</button>
 <button class="btn btn-d" id="bReset">リセット</button>
 </div>
+<div class="post-panel">
+<div class="post-box" id="postBox">
+<div class="post-hd" onclick="document.getElementById('postBox').classList.toggle('open')">
+<div class="post-icon">&#x1F4DD;</div>
+<div class="post-info">
+<div class="post-label">投稿内容を記録</div>
+<div class="post-val" id="postSummary">今週の投稿内容を入力</div>
+</div>
+<svg class="post-chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+</div>
+<div class="post-body"><div class="post-body-in">
+<div class="post-field"><label>投稿日</label>
+<input type="date" id="postDate"></div>
+<div class="post-field"><label>キャプション</label>
+<textarea id="postCaption" placeholder="投稿本文を入力"></textarea></div>
+<div class="post-field"><label>ハッシュタグ</label>
+<textarea id="postTags" placeholder="#タグ1 #タグ2 ..."></textarea></div>
+<div class="post-field"><label>動画URL / ファイル名</label>
+<input type="text" id="postUrl" placeholder="https://... または ファイル名"></div>
+<div class="post-field"><label>備考</label>
+<textarea id="postNote" placeholder="BGM・補足など"></textarea></div>
+<div class="post-actions">
+<button class="btn btn-save" id="bSavePost">この内容を保存</button>
+<span class="post-saved" id="postSaved"></span>
+</div>
+</div></div>
+</div>
+</div>
 <div class="container" id="app"></div>
+<div class="archive-panel">
+<div class="archive-box" id="archiveBox">
+<div class="archive-hd" onclick="document.getElementById('archiveBox').classList.toggle('open')">
+<div class="archive-icon">&#x1F4DA;</div>
+<div class="archive-title">投稿アーカイブ</div>
+<span class="archive-cnt" id="archCnt">0件</span>
+<svg class="archive-chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+</div>
+<div class="archive-body"><div class="archive-body-in" id="archBody"></div></div>
+</div>
+</div>
 <div class="log-panel">
 <div class="log-box" id="logBox">
 <div class="log-hd" onclick="document.getElementById('logBox').classList.toggle('open')">
@@ -296,11 +384,13 @@ var S=[
 var CK='ig-manual-ctx';
 var LK='ig-manual-log';
 var MK='ig-manual-memos';
+var PK='ig-manual-posts';
 
 // === State ===
 var ctx=JSON.parse(localStorage.getItem(CK)||'{}');
 var logs=JSON.parse(localStorage.getItem(LK)||'[]');
 var memos=JSON.parse(localStorage.getItem(MK)||'{}');
+var posts=JSON.parse(localStorage.getItem(PK)||'{}');
 var openSecs={};  // track which sections are open
 var openMemos={}; // track which memo areas are open
 var firstNext=null; // first unchecked step number
@@ -333,6 +423,7 @@ function getStepInfo(n){for(var i=logs.length-1;i>=0;i--){if(logs[i].step===n&&l
 function saveCtx(){localStorage.setItem(CK,JSON.stringify(ctx))}
 function saveLog(){localStorage.setItem(LK,JSON.stringify(logs))}
 function saveMemos(){localStorage.setItem(MK,JSON.stringify(memos))}
+function savePosts(){localStorage.setItem(PK,JSON.stringify(posts))}
 
 // === D: Compact header on scroll ===
 var hdr=document.getElementById('hdr');
@@ -510,6 +601,92 @@ function renderLog(){
   lb.innerHTML=h;
 }
 
+// === Post content recording ===
+var postDateEl=document.getElementById('postDate');
+var postCapEl=document.getElementById('postCaption');
+var postTagsEl=document.getElementById('postTags');
+var postUrlEl=document.getElementById('postUrl');
+var postNoteEl=document.getElementById('postNote');
+var postSavedEl=document.getElementById('postSaved');
+function loadPost(){
+  var k=cycleKey();
+  var p=posts[k]||{};
+  postDateEl.value=p.date||'';
+  postCapEl.value=p.caption||'';
+  postTagsEl.value=p.tags||'';
+  postUrlEl.value=p.url||'';
+  postNoteEl.value=p.note||'';
+  var sum=document.getElementById('postSummary');
+  if(p.caption||p.tags||p.date){
+    sum.textContent='記録済'+(p.date?' ('+p.date+')':'');
+  }else{
+    sum.textContent='今週の投稿内容を入力';
+  }
+}
+function savePost(){
+  var k=cycleKey();
+  if(k==='_default'){alert('店舗と週を選択してから保存してください');return}
+  posts[k]={
+    shop:ctx.shop||'',week:ctx.week||'',
+    date:postDateEl.value,caption:postCapEl.value,
+    tags:postTagsEl.value,url:postUrlEl.value,note:postNoteEl.value,
+    savedAt:new Date().toISOString()
+  };
+  savePosts();
+  postSavedEl.textContent='保存しました';
+  setTimeout(function(){postSavedEl.textContent=''},2000);
+  loadPost();
+  renderArchive();
+}
+function delPost(k){
+  if(!confirm('この投稿記録を削除しますか？'))return;
+  delete posts[k];savePosts();
+  if(k===cycleKey())loadPost();
+  renderArchive();
+}
+function renderArchive(){
+  var ab=document.getElementById('archBody');
+  var ac=document.getElementById('archCnt');
+  var keys=Object.keys(posts);
+  ac.textContent=keys.length+'件';
+  if(!keys.length){ab.innerHTML='<div class="archive-empty">まだ投稿記録がありません</div>';return}
+  var arr=keys.map(function(k){return {k:k,p:posts[k]}});
+  arr.sort(function(a,b){return (b.p.savedAt||'').localeCompare(a.p.savedAt||'')});
+  var h='';
+  arr.forEach(function(e){
+    var p=e.p;var k=e.k;
+    var role=p.week&&WEEK_DATA[p.week]?WEEK_DATA[p.week].role:'';
+    h+='<div class="archive-card">';
+    h+='<div class="archive-card-hd">';
+    h+='<div class="archive-card-shop">'+esc(p.shop||'(店舗なし)')+'</div>';
+    h+='<div class="archive-card-meta">'+(p.week?'第'+p.week+'週 '+role:'')+'</div>';
+    h+='</div>';
+    if(p.date)h+='<div class="archive-card-date">投稿日: '+esc(p.date)+'</div>';
+    if(p.caption)h+='<div class="archive-card-row"><span class="lbl">キャプション</span></div><div class="archive-card-text">'+esc(p.caption)+'</div>';
+    if(p.tags)h+='<div class="archive-card-row" style="margin-top:.5rem"><span class="lbl">ハッシュタグ</span></div><div class="archive-card-text">'+esc(p.tags)+'</div>';
+    if(p.url){
+      var isUrl=/^https?:\/\//.test(p.url);
+      h+='<div class="archive-card-row" style="margin-top:.5rem"><span class="lbl">動画/URL</span>'+(isUrl?'<a class="archive-card-url" href="'+esc(p.url)+'" target="_blank" rel="noopener">'+esc(p.url)+'</a>':esc(p.url))+'</div>';
+    }
+    if(p.note)h+='<div class="archive-card-row" style="margin-top:.5rem"><span class="lbl">備考</span>'+esc(p.note)+'</div>';
+    h+='<div class="archive-actions">';
+    h+='<button class="btn-mini" onclick="loadCycleFromArchive(\''+esc(k)+'\')">このサイクルを開く</button>';
+    h+='<button class="btn-mini del" onclick="delPost(\''+esc(k)+'\')">削除</button>';
+    h+='</div>';
+    h+='</div>';
+  });
+  ab.innerHTML=h;
+}
+function loadCycleFromArchive(k){
+  var p=posts[k];if(!p)return;
+  if(p.shop)selShop.value=p.shop;
+  if(p.week)selWeek.value=p.week;
+  updCtx();
+  document.getElementById('postBox').classList.add('open');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('bSavePost').onclick=savePost;
+
 // === Context panel ===
 var selShop=document.getElementById('selShop');
 var selWeek=document.getElementById('selWeek');
@@ -524,6 +701,7 @@ function updCtx(){
   ctx.shop=shop;ctx.week=week;saveCtx();
   // A: switch progress to this cycle
   st=loadProgress();
+  loadPost();
   var sum=document.getElementById('ctxSummary');
   var sc=document.getElementById('ctxScript');
   var sb=document.getElementById('ctxScriptBody');
@@ -555,6 +733,7 @@ document.getElementById('bConfirm').onclick=function(){st={};saveProgress(st);do
 
 // === Initial render ===
 updCtx();
+renderArchive();
 // Auto-open first incomplete section
 var autoOpened=false;
 S.forEach(function(sec){
